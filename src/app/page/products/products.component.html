@@ -1,0 +1,73 @@
+<!-- Contenedor principal de Productos - MANEJA TODO EL CONTENIDO -->
+<section class="products-container">
+
+  <!-- Sección Hero de Products -->
+  <section class="hero-section section">
+    <div class="products-hero-content text-center">
+      <h1>Nuestros Productos</h1>
+      <p class="lead">Descubre nuestra colección de anteojos y lentes de contacto de las mejores marcas</p>
+    </div>
+  </section>
+
+  <!-- Sección de productos -->
+  <section class="products-hero">
+    <div class="cards">
+      
+      <!-- Tarjeta 1: Lentes oftálmicos -->
+      <article class="card">
+        <div class="card-image">
+          <img 
+            src="https://cdn.pixabay.com/photo/2022/02/19/14/02/glasses-7022673_1280.jpg" 
+            alt="Lentes oftálmicos de diferentes diseños y estilos"
+            loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Lentes Oftálmicos</h3>
+          <p class="card-sub">Cristales para todas las necesidades. Monofocales, bifocales y progresivos de última generación.</p>
+        </div>
+      </article>
+
+      <!-- Tarjeta 2: Armazones -->
+      <article class="card">
+        <div class="card-image">
+          <img 
+            src="https://cdn.pixabay.com/photo/2017/08/10/00/39/eyeglasses-2616530_1280.jpg" 
+            alt="Armazones con receta de diferentes estilos y colores"
+            loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Armazones con Receta</h3>
+          <p class="card-sub">Completos y montados al aire. Variedad de diseños modernos y clásicos para todos los gustos.</p>
+        </div>
+      </article>
+
+      <!-- Tarjeta 3: Lentes de Contacto -->
+      <article class="card">
+        <div class="card-image">
+          <img 
+            src="https://cdn.pixabay.com/photo/2020/01/25/17/33/contact-lenses-4792983_1280.jpg" 
+            alt="Lentes de contacto y productos de cuidado"
+            loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Lentes de Contacto</h3>
+          <p class="card-sub">Comodidad y libertad visual. Diarios, mensuales y especializados con adaptación profesional.</p>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <!-- Sección CTA -->
+  <section class="cta-section">
+    <div class="products-cta-content text-center">
+      <h2>¿No encontraste lo que buscas?</h2>
+      <p class="lead">Contáctanos y te ayudaremos a encontrar el producto perfecto para ti</p>
+      <!-- Botón actualizado: cambié <a routerLink> por <button (click)> -->
+      <button (click)="scrollToContact()" class="cta-button">
+        Contáctanos Ahora
+      </button>
+    </div>
+  </section>
+
+</section>

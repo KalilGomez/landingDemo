@@ -1,0 +1,339 @@
+/* ===== SERVICES CONTAINER STYLES ===== */
+
+/* Contenedor principal de servicios */
+.services-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  min-height: auto;
+  overflow-x: hidden;
+}
+
+/* ===== HERO SECTION STYLES ===== */
+.services-container .hero-section {
+  background: linear-gradient(135deg, #F9FAFB 0%, #E5E7EB 100%);
+  padding: var(--spacing-2xl) 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-2xl);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-bottom: none;
+}
+
+.services-container .hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(185, 28, 28, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+}
+
+.services-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--spacing-md);
+}
+
+.services-hero-content h1 {
+  font-size: var(--font-5xl);
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  padding-bottom: 0;
+}
+
+.services-hero-content h1::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #B91C1C, #991B1B);
+  border-radius: 2px;
+}
+
+.services-hero-content .lead {
+  font-size: var(--font-lg);
+  color: #6B7280;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== SERVICES CONTENT STYLES ===== */
+.services-content {
+  padding: var(--spacing-2xl) 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  padding: 0;
+}
+
+/* ===== SERVICE CARD STYLES ===== */
+.servicio-card {
+  background: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.servicio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #B91C1C, #991B1B);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.servicio-card:hover::before {
+  transform: scaleX(1);
+}
+
+.servicio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(185, 28, 28, 0.15);
+}
+
+.servicio-card .card-body {
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ===== SERVICE ICON STYLES ===== */
+.service-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #B91C1C, #991B1B);
+  border-radius: 50%;
+  margin: 0 auto var(--spacing-lg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-icon::after {
+  content: '🔧';
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+/* Iconos específicos para cada servicio */
+.servicio-card:nth-child(1) .service-icon::after {
+  content: '🔧';
+}
+
+.servicio-card:nth-child(2) .service-icon::after {
+  content: '👥';
+}
+
+.servicio-card:nth-child(3) .service-icon::after {
+  content: '👁️';
+}
+
+.servicio-card:nth-child(4) .service-icon::after {
+  content: '🥽';
+}
+
+/* ===== CARD CONTENT STYLES ===== */
+.servicio-card .card-title {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  position: relative;
+}
+
+.servicio-card .card-text {
+  font-size: var(--font-base);
+  color: #6B7280;
+  line-height: 1.6;
+  text-align: center;
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .services-container .hero-section {
+    padding: var(--spacing-xl) 0;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .services-hero-content h1 {
+    font-size: var(--font-4xl);
+  }
+  
+  .services-hero-content .lead {
+    font-size: var(--font-base);
+  }
+  
+  .services-content {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .servicio-card .card-body {
+    padding: var(--spacing-xl);
+  }
+  
+  .servicio-card .card-title {
+    font-size: var(--font-lg);
+  }
+  
+  .servicio-card .card-text {
+    font-size: var(--font-sm);
+  }
+  
+  .service-icon {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .service-icon::after {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-container .hero-section {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .services-hero-content h1 {
+    font-size: var(--font-3xl);
+  }
+  
+  .services-hero-content .lead {
+    font-size: var(--font-sm);
+  }
+  
+  .services-content {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .servicio-card .card-body {
+    padding: var(--spacing-lg);
+  }
+  
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .service-icon::after {
+    font-size: 18px;
+  }
+}
+
+/* ===== ANIMACIONES SUTILES ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .services-hero-content {
+    animation: fadeInDown 0.8s ease-out;
+  }
+  
+  .servicio-card {
+    animation: fadeInUp 0.6s ease-out both;
+  }
+  
+  .servicio-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  
+  .servicio-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .servicio-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  
+  .servicio-card:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respeta las preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .servicio-card:hover {
+    transform: none;
+  }
+  
+  .services-hero-content,
+  .servicio-card {
+    animation: none;
+  }
+}
+
+/* ===== ESTADOS DE FOCUS PARA ACCESIBILIDAD ===== */
+.servicio-card:focus-within {
+  outline: 2px solid #B91C1C;
+  outline-offset: 2px;
+}
+
+.servicio-card:focus-within::before {
+  transform: scaleX(1);
+}

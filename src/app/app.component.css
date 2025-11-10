@@ -1,0 +1,80 @@
+/* app.component.css - ESTRUCTURA LIMPIA Y ORDENADA */
+
+.app-wrapper {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  padding-top: 80px;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ESPACIADO UNIFORME PARA TODAS LAS SECCIONES */
+main > section {
+  scroll-margin-top: 80px;
+  position: relative;
+}
+
+/* Secciones sin padding propio - los componentes internos manejan su spacing */
+#home {
+  background: #ffffff;
+}
+
+#productos {
+  background: #ffffff;
+  padding: var(--spacing-3xl) 0;
+}
+
+#servicios {
+  background: #ffffff;
+  padding: 0;
+}
+
+#acerca-de {
+  background: #ffffff;
+  padding: var(--spacing-3xl) 0;
+}
+
+#contacto {
+  background: #ffffff;
+  padding: var(--spacing-3xl) 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    padding-top: 70px;
+  }
+
+  main > section {
+    scroll-margin-top: 70px;
+  }
+
+  #productos,
+  #servicios,
+  #acerca-de,
+  #contacto {
+    padding: var(--spacing-2xl) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-top: 65px;
+  }
+
+  main > section {
+    scroll-margin-top: 65px;
+  }
+
+  #productos,
+  #servicios,
+  #acerca-de,
+  #contacto {
+    padding: var(--spacing-xl) 0;
+  }
+}
