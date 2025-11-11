@@ -1,11 +1,10 @@
-<!-- navbar.component.html -->
 <nav class="navbar">
   <div class="navbar-container">
-    <!-- Logo -->
+
     <div class="nav-logo">
       <a href="#" class="logo-link" (click)="scrollToTop(); $event.preventDefault()">
         <div class="logo-icon">
-          <img src="Logo.webp" alt="Optica Omega Logo" class="logo-img">
+          <img src="logo.webp" alt="Optica Omega Logo" class="logo-img">
         </div>
         <span class="logo-text">
           <span class="logo-optica">Landing</span>
@@ -14,29 +13,17 @@
       </a>
     </div>
 
-    <!-- Menú de navegación -->
     <div class="navbar-menu" [class.mobile-open]="isMobileMenuOpen" [class.show]="isMobileMenuOpen">
-      <a
-        *ngFor="let item of menuItems"
-        class="nav-link"
-        [class.active]="isActiveSection(item.id)"
-        (click)="navigateToSection(item.id); $event.preventDefault()"
-        href="#{{item.id}}"
-      >
+      <a *ngFor="let item of menuItems" class="nav-link" [class.active]="isActiveSection(item.id)"
+        (click)="navigateToSection(item.id); $event.preventDefault()" href="#{{item.id}}">
         <i [class]="item.icon" class="nav-icon"></i>
         <span class="nav-text">{{ item.label }}</span>
         <span class="nav-indicator"></span>
       </a>
     </div>
 
-    <!-- Botón móvil -->
     <div class="mobile-menu-button">
-      <button 
-        class="hamburger" 
-        [class.active]="isMobileMenuOpen"
-        (click)="toggleMobileMenu()"
-        aria-label="Toggle menu"
-      >
+      <button class="hamburger" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
@@ -45,9 +32,4 @@
   </div>
 </nav>
 
-<!-- Overlay para cerrar el menú al hacer click fuera -->
-<div 
-  class="mobile-overlay" 
-  [class.active]="isMobileMenuOpen"
-  (click)="closeMobileMenu()"
-></div>
+<div class="mobile-overlay" [class.active]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
