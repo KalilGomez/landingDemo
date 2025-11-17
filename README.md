@@ -2,6 +2,8 @@
 
 Landing Demo es una landing page moderna desarrollada en **Angular 19**, pensada inicialmente para una óptica, pero adaptable a cualquier negocio que quiera mostrar sus servicios y productos de forma clara, profesional y ligera.
 
+El proyecto está desarrollado siguiendo estándares profesionales, priorizando la calidad del código, la mantenibilidad y la escalabilidad.
+
 ## 🚀 Descripción del proyecto
 
 Esta landing permite a los usuarios visualizar:
