@@ -1,59 +1,139 @@
-# LandingOmega
+# Landing Demo
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
+Landing Demo es una landing page moderna desarrollada en **Angular 19**, pensada inicialmente para una óptica, pero adaptable a cualquier negocio que quiera mostrar sus servicios y productos de forma clara, profesional y ligera.
 
-## Development server
+## 🚀 Descripción del proyecto
 
-To start a local development server, run:
+Esta landing permite a los usuarios visualizar:
+
+* **Productos** ofrecidos
+* **Servicios** disponibles
+* **Información de la empresa** acerca de 
+* **Formulario de contacto** con envío mediante **PHP**
+* **Mapa de ubicación** para facilitar el acceso al local
+
+El enfoque principal es brindar una experiencia visual limpia, moderna, responsiva y optimizada.
+
+## 🛠️ Tecnologías utilizadas
+
+* **Angular 19 (standalone app)**
+* **Bootstrap 5.3**
+* **Bootstrap Icons 1.13**
+* **HTML5**
+* **CSS3**
+* **TypeScript**
+* Imágenes optimizadas en **WEBP**
+
+## 📦 Estructura del proyecto y componentes
+
+El proyecto está organizado por componentes para mantener una arquitectura clara y escalable:
+
+* `navbar`
+* `hero`
+* `home`
+* `products`
+* `services`
+* `contact`
+* `about-us`
+* `footer`
+* `services` (componente con desplazamiento en página)
+* `wsp-button` (botón flotante de WhatsApp)
+
+### ✨ Características principales
+
+* Totalmente **responsive**
+* **Animaciones** suaves en distintos elementos
+* **Scroll en página** entre secciones
+* **Diseño moderno** basado en Bootstrap
+* **Optimización visual** usando imágenes en formato `webp`
+* **Formulario en PHP** para contacto vía email
+
+## 📂 Estructura del proyecto
+
+A continuación se muestra la estructura principal del proyecto basada en tu organización de carpetas y componentes:
+
+```
+src/
+└── app/
+    ├── footer/
+    │   ├── footer.component.html
+    │   ├── footer.component.css
+    │   └── footer.component.ts
+    │
+    ├── navbar/
+    │   ├── navbar.component.html
+    │   ├── navbar.component.css
+    │   └── navbar.component.ts
+    │
+    ├── page/
+    │   ├── about-us/
+    │   │   ├── about-us.component.html
+    │   │   ├── about-us.component.css
+    │   │   └── about-us.component.ts
+    │   │
+    │   ├── contact/
+    │   │   ├── contact.component.html
+    │   │   ├── contact.component.css
+    │   │   └── contact.component.ts
+    │   │
+    │   ├── home/
+    │   │   ├── home.component.html
+    │   │   ├── home.component.css
+    │   │   └── home.component.ts
+    │   │
+    │   ├── products/
+    │   │   ├── products.component.html
+    │   │   ├── products.component.css
+    │   │   └── products.component.ts
+    │   │
+    │   └── services/
+    │       ├── services.component.html
+    │       ├── services.component.css
+    │       └── services.component.ts
+    │
+    ├── services/
+    │   └── scroll-spy.service.ts
+    │
+    ├── whatsapp/
+    │   ├── whatsapp.component.html
+    │   ├── whatsapp.component.css
+    │   └── whatsapp.component.ts
+    │
+    ├── app.component.html
+    ├── app.component.css
+    └── app.component.ts
+```
+
+## 🚀 Instalación y ejecución
+
+1. Instalar dependencias:
+
+```bash
+npm install
+```
+
+2. Ejecutar el servidor de desarrollo:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+3. Abrir la aplicación:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 👨‍💻 Sobre el autor
 
-```bash
-ng generate --help
-```
+Soy **Analista de Sistemas**, con experiencia en **programación** y **soporte IT**. Soy una persona **versátil**, capaz de comprender tanto la parte técnica como el análisis funcional de un proyecto.
 
-## Building
+Busco seguir creciendo profesionalmente, aportando soluciones claras, escalables y enfocadas en la experiencia del usuario.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 📫 Contacto
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Kalil_Gomez-blue)](https://www.linkedin.com/in/kalilgomez/)
+📧 **Email:** kalil_gomez@hotmail.com  
+📱 **Teléfono:** 011-2474-6126
