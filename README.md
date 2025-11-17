@@ -1,59 +1,116 @@
-# LandingOmega
+# LandingDemo -- Landing Page para Óptica (Angular + Bootstrap)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
+**LandingDemo** es una landing page moderna desarrollada en **Angular
+(standalone)** con **Bootstrap**, diseñada para visualizar los
+servicios, productos y la identidad de marca de una óptica.\
+Incluye un formulario de contacto funcional mediante **PHP**, secciones
+de presentación y un diseño adaptable a cualquier rubro que necesite una
+página clara, directa y enfocada en conversión.
 
-## Development server
+Este proyecto forma parte de mi portfolio personal. Lo desarrollé
+íntegramente, aplicando buenas prácticas de desarrollo, análisis
+funcional y diseño orientado a la experiencia del usuario.
 
-To start a local development server, run:
+## ✨ Características principales
 
-```bash
+-   **Sección Hero** con llamada a la acción destacada\
+-   **Navbar funcional** con desplazamiento suave entre secciones\
+-   **Sección de servicios y productos**\
+-   **CTA (Call to Action)** clara y visible\
+-   **Formulario de contacto** integrado con PHP para envío de mails\
+-   **Footer informativo**\
+-   **Diseño responsive** gracias a Bootstrap\
+-   Código estructurado en **Angular standalone**, sin módulos
+    tradicionales\
+-   Arquitectura simple, limpia y lista para escalar
+
+## 🛠️ Tecnologías utilizadas
+
+-   **Angular 17+ (standalone components)**
+-   **Bootstrap 5**
+-   **HTML5 / CSS3**
+-   **TypeScript**
+-   **PHP** para el envío de correos\
+-   **Node.js + npm** para entorno de desarrollo
+
+## 📂 Estructura del proyecto
+
+    /src
+      /app
+        - componentes standalone
+        - secciones de la landing
+      /assets
+      /styles
+    /public
+    backend/
+      - sendMail.php
+    angular.json
+    package.json
+    README.md
+
+## 🚀 Instalación y ejecución
+
+1.  Clonar el repositorio:
+
+``` bash
+git clone https://github.com/KalilGomez/landingDemo.git
+cd landingDemo
+```
+
+2.  Instalar dependencias:
+
+``` bash
+npm install
+```
+
+3.  Ejecutar servidor de desarrollo:
+
+``` bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abrir: **http://localhost:4200**
 
-## Code scaffolding
+## 📧 Integración del formulario (PHP)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+El formulario envía los datos a un archivo PHP ubicado en el backend, el
+cual procesa y envía el correo.\
+Configurar los datos en `sendMail.php` y verificar que el hosting
+soporte PHP.
 
-```bash
-ng generate component component-name
-```
+## 🎨 Enfoque y diseño
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+-   Minimalista\
+-   Limpio\
+-   Fácil de adaptar\
+-   Enfocado en la conversión
 
-```bash
-ng generate --help
-```
+Aunque esta versión está orientada a una **óptica**, puede reutilizarse
+para: - Servicios\
+- Productos\
+- Negocios locales\
+- Emprendimientos\
+- Startups
 
-## Building
+## 👨‍💻 Sobre el proyecto
 
-To build the project run:
+Desarrollado completamente por mí para mostrar: - Versatilidad\
+- Conocimiento en Angular y Bootstrap\
+- Capacidad de análisis\
+- Buenas prácticas en componentes standalone\
+- Implementación de formularios reales con PHP
 
-```bash
-ng build
-```
+Es parte de mi portfolio y refleja mi nivel actual como desarrollador
+front‑end.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📌 Roadmap
 
-## Running unit tests
+-   Optimización SEO\
+-   Integración con API real\
+-   Agregar animaciones\
+-   Modo oscuro\
+-   Tests unitarios
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 📄 Licencia
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Proyecto sin licencia explícita. Uso personal o educativo.
