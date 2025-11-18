@@ -1,135 +1,219 @@
-/* ===== RESET Y CONFIGURACIÓN BASE ===== */
+/* ============================================
+   RESET Y CONFIGURACIÓN BASE
+   ============================================ */
+
+/* Reset global: elimina márgenes, padding y establece box-sizing consistente */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* Incluye padding y border en el ancho total */
 }
 
+/* Configuración del elemento HTML raíz */
 html {
   scroll-behavior: smooth;
+  /* Scroll suave al navegar con anclas (#) */
   font-size: 16px;
+  /* Tamaño base para cálculos de rem */
 }
 
+/* Estilos base del body */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Fuentes del sistema */
   line-height: 1.6;
+  /* Espaciado entre líneas para mejor legibilidad */
   color: #333333;
+  /* Color de texto principal (gris oscuro) */
   background-color: #ffffff;
+  /* Fondo blanco */
   -webkit-font-smoothing: antialiased;
+  /* Suavizado de fuentes en WebKit (Safari, Chrome) */
   -moz-osx-font-smoothing: grayscale;
-  /* NO padding-top aquí - cada sección maneja su propio spacing */
+  /* Suavizado de fuentes en Firefox macOS */
 }
 
-/* ===== VARIABLES CSS (COLORES Y TAMAÑOS) ===== */
+/* ============================================
+   VARIABLES CSS (CUSTOM PROPERTIES)
+   ============================================ */
+
 :root {
-  /* Colores principales */
+  /* === COLORES PRINCIPALES === */
   --primary-color: #007bff;
+  /* Azul principal */
   --primary-dark: #0056b3;
+  /* Azul oscuro para hover */
   --secondary-color: #6c757d;
+  /* Gris secundario */
   --accent-color: #28a745;
-  
-  /* Colores de texto */
+  /* Verde de acento */
+
+  /* === COLORES DE TEXTO === */
   --text-primary: #333333;
+  /* Texto principal (gris oscuro) */
   --text-secondary: #6c757d;
+  /* Texto secundario (gris medio) */
   --text-light: #ffffff;
-  
-  /* Colores de fondo */
+  /* Texto claro (blanco) */
+
+  /* === COLORES DE FONDO === */
   --bg-primary: #ffffff;
+  /* Fondo principal (blanco) */
   --bg-secondary: #f8f9fa;
+  /* Fondo secundario (gris muy claro) */
   --bg-dark: #343a40;
-  
-  /* Tamaños de fuente */
-  --font-xs: 0.75rem;    /* 12px */
-  --font-sm: 0.875rem;   /* 14px */
-  --font-base: 1rem;     /* 16px */
-  --font-lg: 1.125rem;   /* 18px */
-  --font-xl: 1.25rem;    /* 20px */
-  --font-2xl: 1.5rem;    /* 24px */
-  --font-3xl: 1.875rem;  /* 30px */
-  --font-4xl: 2.25rem;   /* 36px */
-  --font-5xl: 3rem;      /* 48px */
-  
-  /* Espaciado */
-  --spacing-xs: 0.25rem;  /* 4px */
-  --spacing-sm: 0.5rem;   /* 8px */
-  --spacing-md: 1rem;     /* 16px */
-  --spacing-lg: 1.5rem;   /* 24px */
-  --spacing-xl: 2rem;     /* 32px */
-  --spacing-2xl: 3rem;    /* 48px */
-  --spacing-3xl: 4rem;    /* 64px */
-  
-  /* Border radius */
-  --radius-sm: 0.25rem;   /* 4px */
-  --radius-md: 0.5rem;    /* 8px */
-  --radius-lg: 0.75rem;   /* 12px */
-  --radius-xl: 1rem;      /* 16px */
+  /* Fondo oscuro */
+
+  /* === ESCALA DE TAMAÑOS DE FUENTE (Sistema de tipografía modular) === */
+  --font-xs: 0.75rem;
+  /* 12px - Texto extra pequeño */
+  --font-sm: 0.875rem;
+  /* 14px - Texto pequeño */
+  --font-base: 1rem;
+  /* 16px - Tamaño base */
+  --font-lg: 1.125rem;
+  /* 18px - Texto grande */
+  --font-xl: 1.25rem;
+  /* 20px - Texto extra grande */
+  --font-2xl: 1.5rem;
+  /* 24px - Títulos pequeños */
+  --font-3xl: 1.875rem;
+  /* 30px - Títulos medianos */
+  --font-4xl: 2.25rem;
+  /* 36px - Títulos grandes */
+  --font-5xl: 3rem;
+  /* 48px - Títulos hero */
+
+  /* === ESCALA DE ESPACIADO (Sistema de espaciado consistente) === */
+  --spacing-xs: 0.25rem;
+  /* 4px - Espaciado extra pequeño */
+  --spacing-sm: 0.5rem;
+  /* 8px - Espaciado pequeño */
+  --spacing-md: 1rem;
+  /* 16px - Espaciado mediano (base) */
+  --spacing-lg: 1.5rem;
+  /* 24px - Espaciado grande */
+  --spacing-xl: 2rem;
+  /* 32px - Espaciado extra grande */
+  --spacing-2xl: 3rem;
+  /* 48px - Espaciado 2x grande */
+  --spacing-3xl: 4rem;
+  /* 64px - Espaciado 3x grande */
+
+  /* === BORDER RADIUS (Bordes redondeados) === */
+  --radius-sm: 0.25rem;
+  /* 4px - Radio pequeño */
+  --radius-md: 0.5rem;
+  /* 8px - Radio mediano */
+  --radius-lg: 0.75rem;
+  /* 12px - Radio grande */
+  --radius-xl: 1rem;
+  /* 16px - Radio extra grande */
 }
 
-/* ===== TIPOGRAFÍA ===== */
-h1, h2, h3, h4, h5, h6 {
+/* ============================================
+   TIPOGRAFÍA - HEADINGS
+   ============================================ */
+
+/* Estilos base para todos los títulos (H1-H6) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
+  /* Negrita */
   line-height: 1.2;
+  /* Interlineado ajustado para títulos */
   margin-bottom: var(--spacing-md);
+  /* Espaciado inferior consistente */
   color: var(--text-primary);
 }
 
+/* Tamaños específicos para cada nivel de título */
 h1 {
   font-size: var(--font-4xl);
+  /* 36px - Título principal */
 }
 
 h2 {
   font-size: var(--font-3xl);
+  /* 30px - Subtítulo importante */
 }
 
 h3 {
   font-size: var(--font-2xl);
+  /* 24px - Subtítulo menor */
 }
 
 h4 {
   font-size: var(--font-xl);
+  /* 20px - Título de sección */
 }
 
 h5 {
   font-size: var(--font-lg);
+  /* 18px - Título pequeño */
 }
 
 h6 {
   font-size: var(--font-base);
+  /* 16px - Título mínimo */
 }
 
+/* ============================================
+   ELEMENTOS DE TEXTO
+   ============================================ */
+
+/* Párrafos con espaciado inferior */
 p {
   margin-bottom: var(--spacing-md);
   color: var(--text-primary);
 }
 
+/* Enlaces con transición suave de color */
 a {
   color: var(--primary-color);
   text-decoration: none;
+  /* Sin subrayado por defecto */
   transition: color 0.3s ease;
 }
 
+/* Estado hover de enlaces */
 a:hover {
   color: var(--primary-dark);
+  /* Oscurece en hover */
 }
 
-/* ===== ELEMENTOS DE LISTA ===== */
-ul, ol {
+/* Listas (ordenadas y desordenadas) */
+ul,
+ol {
   margin-bottom: var(--spacing-md);
   padding-left: var(--spacing-lg);
+  /* Indentación de lista */
 }
 
+/* Items de lista con espaciado */
 li {
   margin-bottom: var(--spacing-xs);
 }
 
-/* ===== ELEMENTOS DE CONTENIDO ===== */
+/* Imágenes responsivas por defecto */
 img {
   max-width: 100%;
+  /* No se sale del contenedor */
   height: auto;
+  /* Mantiene proporción */
   display: block;
+  /* Elimina espacio debajo de la imagen */
 }
 
-/* ===== CLASES UTILITARIAS BÁSICAS ===== */
+/* ============================================
+   UTILITY CLASSES - ALINEACIÓN DE TEXTO
+   ============================================ */
+
 .text-center {
   text-align: center;
 }
@@ -141,6 +225,10 @@ img {
 .text-right {
   text-align: right;
 }
+
+/* ============================================
+   UTILITY CLASSES - COLORES DE TEXTO
+   ============================================ */
 
 .text-primary {
   color: var(--primary-color);
@@ -154,6 +242,10 @@ img {
   color: var(--text-light);
 }
 
+/* ============================================
+   UTILITY CLASSES - COLORES DE FONDO
+   ============================================ */
+
 .bg-primary {
   background-color: var(--primary-color);
 }
@@ -166,60 +258,94 @@ img {
   background-color: var(--bg-dark);
 }
 
-/* ===== CONTENEDORES BÁSICOS ===== */
+/* ============================================
+   LAYOUT - CONTENEDOR
+   ============================================ */
+
+/* Contenedor principal con ancho máximo y centrado */
 .container {
   width: 100%;
   max-width: 1200px;
+  /* Ancho máximo para contenido */
   margin: 0 auto;
+  /* Centra horizontalmente */
   padding: 0 var(--spacing-md);
+  /* Padding lateral */
 }
 
+/* ============================================
+   LAYOUT - SECCIONES
+   ============================================ */
+
+/* Espaciado vertical estándar para secciones */
 .section {
   padding: var(--spacing-3xl) 0;
+  /* 64px arriba y abajo */
 }
 
-/* ===== BOTONES BÁSICOS ===== */
+/* ============================================
+   COMPONENTES - BOTONES
+   ============================================ */
+
+/* Estilos base para todos los botones */
 .btn {
   display: inline-block;
   padding: var(--spacing-sm) var(--spacing-lg);
+  /* Padding vertical y horizontal */
   border: none;
   border-radius: var(--radius-md);
   font-size: var(--font-base);
   font-weight: 500;
+  /* Semi-negrita */
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  /* Transición suave para todos los cambios */
   text-decoration: none;
+  /* Sin subrayado si es un enlace */
 }
 
+/* Botón primario con color de marca */
 .btn-primary {
   background-color: var(--primary-color);
   color: var(--text-light);
 }
 
+/* Estado hover del botón primario */
 .btn-primary:hover {
   background-color: var(--primary-dark);
+  /* Oscurece en hover */
   color: var(--text-light);
 }
 
+/* Botón secundario con color gris */
 .btn-secondary {
   background-color: var(--secondary-color);
   color: var(--text-light);
 }
 
+/* Botón outline (solo borde, fondo transparente) */
 .btn-outline {
   background-color: transparent;
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
 }
 
+/* Estado hover del botón outline: se rellena */
 .btn-outline:hover {
   background-color: var(--primary-color);
   color: var(--text-light);
 }
 
-/* Evitar cursor de texto en el navbar */
-/* Cursor normal en el navbar (no la manito) */
+/* ============================================
+   NAVBAR - DESHABILITAR CURSOR POINTER
+   ============================================ */
+
+/* 
+  Deshabilita el cursor pointer y la selección de texto en el navbar
+  Útil para componentes de navegación controlados por JavaScript/Angular
+  donde el cursor debe ser el default en lugar de pointer
+*/
 .navbar *,
 .navbar a,
 .navbar button,
@@ -229,35 +355,61 @@ nav a,
 nav button,
 [routerLink] {
   cursor: default !important;
+  /* Cursor normal en lugar de pointer */
   user-select: none !important;
+  /* Deshabilita selección de texto */
   -webkit-user-select: none !important;
+  /* WebKit (Safari, Chrome) */
   -moz-user-select: none !important;
+  /* Firefox */
   -ms-user-select: none !important;
+  /* IE/Edge legacy */
 }
 
-/* ===== RESPONSIVE BREAKPOINTS BÁSICOS ===== */
+/* ============================================
+   RESPONSIVE DESIGN - TABLETS
+   ============================================ */
+
 @media (max-width: 768px) {
+
+  /* Ajusta tamaños de fuente para pantallas medianas */
   :root {
-    --font-4xl: 2rem;      /* 32px */
-    --font-3xl: 1.5rem;    /* 24px */
-    --font-2xl: 1.25rem;   /* 20px */
+    --font-4xl: 2rem;
+    /* 32px - Reduce títulos grandes */
+    --font-3xl: 1.5rem;
+    /* 24px - Reduce subtítulos */
+    --font-2xl: 1.25rem;
+    /* 20px - Reduce títulos medianos */
   }
-  
+
+  /* Reduce padding lateral del contenedor */
   .container {
     padding: 0 var(--spacing-sm);
+    /* 8px de padding */
   }
-  
+
+  /* Reduce espaciado vertical de secciones */
   .section {
     padding: var(--spacing-2xl) 0;
+    /* 48px arriba y abajo */
   }
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MÓVILES
+   ============================================ */
+
 @media (max-width: 480px) {
+
+  /* Reduce el tamaño base de fuente para móviles pequeños */
   html {
     font-size: 14px;
+    /* Cambia la base de rem de 16px a 14px */
   }
-  
+
+  /* Reduce aún más el espaciado de secciones */
   .section {
     padding: var(--spacing-xl) 0;
+    /* 32px arriba y abajo */
   }
 }
