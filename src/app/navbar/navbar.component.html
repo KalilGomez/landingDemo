@@ -1,11 +1,18 @@
+<!-- ============================================
+     NAVBAR - BARRA DE NAVEGACIÓN PRINCIPAL
+     ============================================ -->
 <nav class="navbar">
   <div class="navbar-container">
 
+    <!-- === LOGO Y MARCA === -->
     <div class="nav-logo">
+      <!-- Logo clickeable que hace scroll al inicio de la página -->
       <a href="#" class="logo-link" (click)="scrollToTop(); $event.preventDefault()">
+        <!-- Contenedor del icono/imagen del logo -->
         <div class="logo-icon">
           <img src="Logo.webp" alt="Optica Omega Logo" class="logo-img">
         </div>
+        <!-- Texto del logo dividido en dos líneas (LANDING/DEMO) -->
         <span class="logo-text">
           <span class="logo-optica">Landing</span>
           <span class="logo-omega">Demo</span>
@@ -13,17 +20,40 @@
       </a>
     </div>
 
+    <!-- === MENÚ DE NAVEGACIÓN === -->
+    <!-- 
+      - [class.mobile-open]: Añade clase cuando el menú móvil está abierto
+      - [class.show]: Añade clase para animar la entrada del menú
+      - En desktop: muestra enlaces horizontalmente
+      - En móvil: panel lateral deslizante desde la derecha
+    -->
     <div class="navbar-menu" [class.mobile-open]="isMobileMenuOpen" [class.show]="isMobileMenuOpen">
+      <!-- 
+        Loop dinámico que genera un enlace por cada item del menú
+        menuItems[] contiene: { id, label, icon }
+      -->
       <a *ngFor="let item of menuItems" class="nav-link" [class.active]="isActiveSection(item.id)"
         (click)="navigateToSection(item.id); $event.preventDefault()" href="#{{item.id}}">
+        <!-- Ícono del enlace (Bootstrap Icons) -->
         <i [class]="item.icon" class="nav-icon"></i>
+        <!-- Texto del enlace -->
         <span class="nav-text">{{ item.label }}</span>
+        <!-- Indicador visual (no usado actualmente en CSS) -->
         <span class="nav-indicator"></span>
       </a>
     </div>
 
+    <!-- === BOTÓN HAMBURGUESA MÓVIL === -->
+    <!-- Solo visible en resoluciones < 768px -->
     <div class="mobile-menu-button">
+      <!-- 
+        Botón hamburguesa que se transforma en X cuando está activo
+        - [class.active]: Añade clase para animar a forma de X
+        - (click): Alterna el estado abierto/cerrado del menú
+        - aria-label: Etiqueta de accesibilidad para lectores de pantalla
+      -->
       <button class="hamburger" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+        <!-- Tres líneas que forman el icono hamburguesa -->
         <span></span>
         <span></span>
         <span></span>
@@ -32,4 +62,13 @@
   </div>
 </nav>
 
+<!-- ============================================
+     OVERLAY MÓVIL
+     ============================================ -->
+<!-- 
+  Capa oscura semi-transparente que aparece detrás del menú móvil
+  - [class.active]: Muestra el overlay cuando el menú está abierto
+  - (click): Cierra el menú al hacer click en el overlay
+  - Solo visible en móviles cuando isMobileMenuOpen = true
+-->
 <div class="mobile-overlay" [class.active]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>

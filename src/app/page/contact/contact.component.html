@@ -1,43 +1,138 @@
+<!-- ============================================
+     CONTACT SECTION - SECCIÓN DE CONTACTO
+     ============================================ -->
 <div class="contact-container">
 
+  <!-- === HERO SECTION - ENCABEZADO PRINCIPAL === -->
+  <!-- 
+    Sección destacada con fondo degradado y elemento decorativo circular
+    Presenta el título y subtítulo de la sección de contacto
+  -->
   <section class="hero-section">
     <div class="contact-hero-content text-center">
+      <!-- Título principal con línea decorativa roja (generada con ::after en CSS) -->
       <h1>Contacto</h1>
+
+      <!-- Texto descriptivo (lead) invitando al usuario a contactar -->
       <p class="lead">¿Tenés alguna consulta? Escribinos o visitanos</p>
     </div>
   </section>
 
+  <!-- === CONTENIDO PRINCIPAL === -->
   <div class="contact-content">
+    <!-- 
+      Grid de contenido con clase custom y Bootstrap row
+      - contact-content-grid: CSS Grid personalizado 60/40
+      - row: clase de Bootstrap para sistema de grid
+      En desktop: 60% formulario | 40% información
+      En móvil: 100% cada uno, apilado verticalmente
+    -->
     <div class="contact-content-grid row">
 
+      <!-- ============================================
+           COLUMNA IZQUIERDA: FORMULARIO DE CONTACTO
+           ============================================ -->
+      <!-- 
+        col-md-6: 50% del ancho en tablets+
+        Sobrescrito por CSS Grid en desktop (60%)
+      -->
       <div class="col-md-6">
+        <!-- 
+          Formulario de contacto con método POST
+          - action: archivo PHP que procesa el envío (sendmail.php)
+          - method: POST para envío seguro de datos
+          - Barra decorativa roja generada con ::before en CSS
+        -->
         <form action="sendmail.php" method="POST" class="contact-form">
+
+          <!-- === CAMPO: NOMBRE COMPLETO === -->
           <div class="form-group">
+            <!-- 
+              Label con asterisco rojo para campo requerido
+              for="nombre": asocia el label con el input
+            -->
             <label for="nombre">Nombre completo <span class="required">*</span></label>
+            <!-- 
+              Input de texto:
+              - type="text": acepta cualquier texto
+              - id="nombre": identificador único para el label
+              - name="nombre": nombre del campo al enviar el formulario
+              - required: validación HTML5 (campo obligatorio)
+              - placeholder: texto de ayuda dentro del campo
+            -->
             <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
           </div>
 
+          <!-- === CAMPO: EMAIL === -->
           <div class="form-group">
             <label for="email">Email <span class="required">*</span></label>
+            <!-- 
+              Input de email:
+              - type="email": validación HTML5 de formato de email
+              - Navegador valida que contenga @ y dominio válido
+            -->
             <input type="email" id="email" name="email" required placeholder="tu@email.com">
           </div>
 
+          <!-- === CAMPO: MENSAJE === -->
           <div class="form-group">
             <label for="mensaje">Mensaje <span class="required">*</span></label>
+            <!-- 
+              Textarea para mensajes largos:
+              - rows="5": altura inicial de 5 líneas
+              - resize: vertical en CSS (permite redimensionar verticalmente)
+              - min-height: 120px en CSS
+            -->
             <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribí tu mensaje aquí..."></textarea>
           </div>
 
+          <!-- === BOTÓN DE ENVÍO === -->
+          <!-- 
+            Botón con:
+            - type="submit": envía el formulario al hacer click
+            - Gradiente rojo en CSS
+            - Efectos hover: elevación y sombra
+            - Ancho completo (width: 100%)
+          -->
           <button type="submit">Enviar Mensaje</button>
         </form>
       </div>
 
+      <!-- ============================================
+           COLUMNA DERECHA: INFORMACIÓN DE CONTACTO
+           ============================================ -->
+      <!-- 
+        col-md-6: 50% del ancho en tablets+
+        Sobrescrito por CSS Grid en desktop (40%)
+      -->
       <div class="col-md-6 contact-info">
         <div class="contact-info-section">
+
+          <!-- === DATOS DE CONTACTO === -->
+          <!-- 
+            Título con borde inferior rojo
+            - border-bottom: 3px solid en CSS
+            - display: inline-block para que el borde sea del ancho del texto
+          -->
           <h5>Datos de Contacto</h5>
+
+          <!-- Dirección física del negocio -->
           <p><strong>Dirección:</strong> Av Corrientes 322, CABA</p>
+
+          <!-- Número de teléfono -->
           <p><strong>Teléfono:</strong> (011) 1111-2222</p>
+
+          <!-- 
+            Email de contacto con codificación de @ (&#64;)
+            Previene spam bots que buscan direcciones de email en HTML
+          -->
           <p><strong>Email:</strong> info&#64;landingdemo.com.ar</p>
 
+          <!-- === HORARIOS DE ATENCIÓN === -->
+          <!-- 
+            Título con clase mt-4 de Bootstrap
+            margin-top adicional para separación visual
+          -->
           <h5 class="mt-4">Horarios</h5>
           <p>
             <strong>Lunes a Viernes:</strong> 09:00 – 18:00<br>
@@ -46,13 +141,37 @@
       </div>
     </div>
 
+    <!-- ============================================
+         SECCIÓN DE MAPA - GOOGLE MAPS
+         ============================================ -->
+    <!-- 
+      Muestra la ubicación del negocio en Google Maps
+      Animación fadeInUp con delay de 0.7s (última en aparecer)
+    -->
     <div class="mapa-section">
       <div class="container">
+        <!-- 
+          Contenedor del iframe con:
+          - height: 400px en desktop, 300px en tablet, 250px en móvil
+          - border-radius y box-shadow en CSS
+        -->
         <div class="mapa-container">
+          <!-- 
+            Iframe de Google Maps:
+            - src: URL embebida de Google Maps con ubicación específica
+            - width/height: dimensiones (ignoradas por CSS que usa 100%)
+            - style="border:0;": elimina borde por defecto
+            - allowfullscreen: permite modo pantalla completa
+            - loading="lazy": carga diferida para mejor performance
+            - referrerpolicy: política de privacidad (no envía referrer)
+            
+            Ubicación: Av. Corrientes 322, CABA, Buenos Aires, Argentina
+          -->
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.035133900754!2d-58.374193423623595!3d-34.603273072954444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacd34bd6f59%3A0x9c14f68442751012!2sAv.%20Corrientes%20322%2C%20C1043AAQ%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1762820612060!5m2!1ses-419!2sar"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
     </div>

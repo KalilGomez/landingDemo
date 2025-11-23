@@ -1,30 +1,70 @@
-<!-- about.component.html -->
+<!-- ============================================
+     ABOUT SECTION - SECCIÓN SOBRE NOSOTROS
+     ============================================ -->
 <div class="about-container">
-  <!-- Sección Hero -->
+
+  <!-- === HERO SECTION - ENCABEZADO PRINCIPAL === -->
+  <!-- 
+    Sección destacada con fondo degradado y elemento decorativo circular
+    Presenta el título y subtítulo de la sección "Sobre Nosotros"
+  -->
   <section class="hero-section">
     <div class="about-hero-content text-center">
+      <!-- Título principal con línea decorativa roja (generada con ::after en CSS) -->
       <h1>Sobre Nosotros</h1>
+
+      <!-- Texto descriptivo (lead) con información resumida -->
       <p class="lead">Comprometidos con tu visión desde hace más de 10 años</p>
     </div>
   </section>
 
-  <!-- Contenido principal -->
+  <!-- === CONTENIDO PRINCIPAL === -->
+  <!-- 
+    Contenedor principal del contenido de la sección
+    Incluye grid de 2 columnas con imagen y texto descriptivo
+  -->
   <div class="about-content">
     <section class="about-content">
+      <!-- Contenedor Bootstrap para estructura responsive -->
       <div class="container">
+        <!-- 
+          Grid de Bootstrap (row) con:
+          - align-items-center: alinea verticalmente al centro
+          - g-5: gap de 3rem entre columnas (Bootstrap spacing)
+        -->
         <div class="row align-items-center g-5">
 
-          <!-- Imagen -->
+          <!-- === COLUMNA IZQUIERDA: IMAGEN === -->
+          <!-- 
+            col-md-6: ocupa 6/12 columnas en tablets+ (50% del ancho)
+            En móviles (<768px) ocupa 12/12 columnas (100% del ancho)
+          -->
           <div class="col-md-6">
             <div class="about-image">
-              <img src="https://media.istockphoto.com/id/654172130/photo/optician.webp?s=2048x2048&w=is&k=20&c=3NpCbTDp3VGXnWXNT7AP1tWKe23dm-oe8BGSwRnjQOA=" alt="Interior de Óptica Omega - Ambiente profesional y moderno" loading="lazy">
+              <!-- 
+                Imagen de la óptica con:
+                - src: URL de imagen desde iStock
+                - alt: Texto descriptivo para accesibilidad y SEO
+                - loading="lazy": Carga diferida para mejor performance
+                - Efectos hover definidos en CSS (escala y sombra)
+              -->
+              <img
+                src="https://media.istockphoto.com/id/654172130/photo/optician.webp?s=2048x2048&w=is&k=20&c=3NpCbTDp3VGXnWXNT7AP1tWKe23dm-oe8BGSwRnjQOA="
+                alt="Interior de Óptica Omega - Ambiente profesional y moderno" loading="lazy">
             </div>
           </div>
 
-          <!-- Contenido de texto -->
+          <!-- === COLUMNA DERECHA: CONTENIDO DE TEXTO === -->
+          <!-- 
+            col-md-6: ocupa 6/12 columnas en tablets+ (50% del ancho)
+            Se apila debajo de la imagen en móviles (<768px)
+          -->
           <div class="col-md-6">
             <div class="about-text">
+              <!-- Título H2 con línea decorativa roja (::after en CSS) -->
               <h2>Con más de 10 años brindando lo mejor para su salud visual</h2>
+
+              <!-- Párrafo descriptivo con información detallada del negocio -->
               <p>
                 Nuestro objetivo es brindar la mejor atención posible a nuestros clientes,
                 garantizando que cada persona reciba un servicio personalizado y de alta calidad.

@@ -1,27 +1,43 @@
-/* ===== ABOUT CONTAINER STYLES ===== */
+/* ============================================
+   CONTENEDOR PRINCIPAL - ABOUT SECTION
+   ============================================ */
 
-/* Contenedor principal del about us */
+/* Contenedor principal con ancho máximo y centrado */
 .about-container {
   width: 100%;
   max-width: 1200px;
+  /* Ancho máximo para mantener legibilidad */
   margin: 0 auto;
+  /* Centra horizontalmente */
   padding: 0 var(--spacing-md);
+  /* Padding horizontal usando variable CSS */
   min-height: auto;
   overflow-x: hidden;
+  /* Previene scroll horizontal no deseado */
 }
 
-/* ===== HERO SECTION STYLES ABOUT ===== */
+/* ============================================
+   SECCIÓN HERO (ENCABEZADO)
+   ============================================ */
+
+/* Hero section con gradiente de fondo y decoración */
 .about-container .hero-section {
   background: linear-gradient(135deg, #F9FAFB 0%, #E5E7EB 100%);
+  /* Gradiente gris claro */
   padding: var(--spacing-2xl) 0;
   position: relative;
+  /* Necesario para posicionar pseudo-elemento decorativo */
   overflow: hidden;
+  /* Oculta el círculo decorativo que se sale */
   border-radius: var(--radius-lg);
+  /* Bordes redondeados */
   margin-bottom: var(--spacing-2xl);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  /* Sombra sutil para profundidad */
   border-bottom: none;
 }
 
+/* Elemento decorativo circular en la esquina superior derecha */
 .about-container .hero-section::before {
   content: '';
   position: absolute;
@@ -30,241 +46,353 @@
   width: 200px;
   height: 200px;
   background: radial-gradient(circle, rgba(185, 28, 28, 0.1) 0%, transparent 70%);
+  /* Gradiente radial rojo translúcido */
   border-radius: 50%;
+  /* Forma circular */
   transform: translate(50%, -50%);
+  /* Posiciona parcialmente fuera del contenedor */
 }
 
+/* Contenedor del contenido del hero con z-index para estar sobre el decorativo */
 .about-hero-content {
   position: relative;
   z-index: 1;
+  /* Por encima del pseudo-elemento ::before */
   padding: 0 var(--spacing-md);
 }
 
+/* === TÍTULO PRINCIPAL DEL HERO === */
+
+/* Título H1 con estilo destacado */
 .about-container .hero-section h1 {
   color: #1F2937;
+  /* Gris oscuro */
   font-size: var(--font-5xl);
+  /* Tamaño extra grande */
   margin-bottom: var(--spacing-lg);
   font-weight: 700;
+  /* Negrita */
   position: relative;
+  /* Para posicionar la línea decorativa */
   padding-bottom: 0;
 }
 
+/* Línea decorativa roja debajo del título */
 .about-container .hero-section h1::after {
   content: '';
   position: absolute;
   bottom: -12px;
+  /* 12px debajo del texto */
   left: 50%;
   transform: translateX(-50%);
+  /* Centra horizontalmente */
   width: 100px;
   height: 4px;
   background: linear-gradient(90deg, #B91C1C, #991B1B);
+  /* Gradiente rojo */
   border-radius: 2px;
 }
 
+/* Texto descriptivo (lead) del hero */
 .about-container .hero-section .lead {
   color: #6B7280;
+  /* Gris medio */
   font-size: var(--font-lg);
   max-width: 700px;
+  /* Ancho máximo para mejorar legibilidad */
   margin: 0 auto;
+  /* Centra el texto */
   font-weight: 400;
+  /* Peso normal */
 }
 
-/* ===== SECCIÓN PRINCIPAL DE CONTENIDO ABOUT ===== */
+/* ============================================
+   CONTENIDO PRINCIPAL (GRID)
+   ============================================ */
+
+/* Contenedor del contenido con padding superior */
 .about-content {
   padding: var(--spacing-2xl) 0 0 0;
 }
 
+/* Grid de 2 columnas para imagen y texto */
 .about-content-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /* Dos columnas iguales */
   gap: var(--spacing-3xl);
+  /* Espaciado grande entre columnas */
   align-items: center;
+  /* Alinea verticalmente al centro */
 }
 
-/* Contenedor de imagen */
+/* ============================================
+   SECCIÓN DE IMAGEN
+   ============================================ */
+
+/* Contenedor de la imagen con overflow oculto para efectos */
 .about-image {
   position: relative;
   overflow: hidden;
+  /* Contiene la imagen cuando crece en hover */
 }
 
+/* Imagen con sombra y efectos hover */
 .about-image img {
   width: 100%;
   height: 400px;
+  /* Altura fija */
   object-fit: cover;
+  /* Recorta y ajusta la imagen manteniendo proporción */
   border-radius: var(--radius-lg);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  /* Sombra pronunciada */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transición suave */
 }
 
+/* Efecto hover: agranda imagen y aumenta sombra */
 .about-image img:hover {
   transform: scale(1.02);
+  /* Agranda 2% */
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  /* Sombra más intensa */
 }
 
-/* Contenido de texto */
+/* ============================================
+   SECCIÓN DE TEXTO
+   ============================================ */
+
+/* Contenedor del texto descriptivo */
 .about-text {
   padding: 0;
 }
 
+/* Título H2 de la sección */
 .about-text h2 {
   color: #1F2937;
   font-size: var(--font-3xl);
   font-weight: 700;
   line-height: 1.3;
+  /* Espaciado entre líneas ajustado */
   margin-bottom: var(--spacing-lg);
   position: relative;
+  /* Para la línea decorativa */
   padding-bottom: 0;
 }
 
+/* Línea decorativa roja debajo del H2 (alineada a la izquierda) */
 .about-text h2::after {
   content: '';
   position: absolute;
   bottom: -12px;
   left: 0;
+  /* Alineada a la izquierda */
   width: 60px;
+  /* Más corta que la del H1 */
   height: 4px;
   background: linear-gradient(135deg, #B91C1C, #991B1B);
   border-radius: 2px;
 }
 
+/* Párrafos descriptivos */
 .about-text p {
   color: #6B7280;
+  /* Gris medio para mejor legibilidad */
   font-size: var(--font-lg);
   line-height: 1.7;
+  /* Espaciado generoso para lectura cómoda */
   margin-bottom: var(--spacing-lg);
 }
 
-/* ===== RESPONSIVE DESIGN ABOUT ===== */
+/* ============================================
+   RESPONSIVE DESIGN - TABLETS
+   ============================================ */
+
 @media (max-width: 768px) {
+
+  /* Reduce padding lateral en tablets */
   .about-container {
     padding: 0 var(--spacing-sm);
   }
-  
+
+  /* Hero más compacto en tablets */
   .about-container .hero-section {
     padding: var(--spacing-xl) 0;
     border-radius: var(--radius-md);
+    /* Bordes menos redondeados */
     margin-bottom: var(--spacing-xl);
   }
-  
+
+  /* Reduce tamaño del título principal */
   .about-container .hero-section h1 {
     font-size: var(--font-4xl);
   }
-  
+
+  /* Reduce tamaño del texto lead */
   .about-container .hero-section .lead {
     font-size: var(--font-base);
   }
-  
+
+  /* Ajusta padding del contenido */
   .about-content {
     padding: var(--spacing-xl) 0 0 0;
   }
-  
+
+  /* Grid cambia a 1 columna (apilado vertical) */
   .about-content-grid {
     grid-template-columns: 1fr;
+    /* Una sola columna */
     gap: var(--spacing-xl);
     text-align: center;
+    /* Centra el texto en móvil */
   }
-  
+
+  /* Título H2 centrado */
   .about-text h2 {
     font-size: var(--font-2xl);
     text-align: center;
   }
-  
+
+  /* Centra la línea decorativa del H2 */
   .about-text h2::after {
     left: 50%;
     transform: translateX(-50%);
   }
-  
+
+  /* Párrafos centrados */
   .about-text p {
     font-size: var(--font-base);
     text-align: center;
   }
-  
+
+  /* Reduce altura de la imagen */
   .about-image img {
     height: 300px;
   }
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MÓVILES PEQUEÑOS
+   ============================================ */
+
 @media (max-width: 480px) {
+
+  /* Padding aún más reducido */
   .about-content {
     padding: var(--spacing-lg) 0 0 0;
   }
-  
+
+  /* Hero más compacto */
   .about-container .hero-section {
     padding: var(--spacing-lg) 0;
   }
-  
+
+  /* Títulos más pequeños */
   .about-container .hero-section h1 {
     font-size: var(--font-3xl);
   }
-  
+
   .about-text h2 {
     font-size: var(--font-xl);
   }
-  
+
+  /* Texto más pequeño */
   .about-text p {
     font-size: var(--font-sm);
   }
-  
+
+  /* Imagen más pequeña */
   .about-image img {
     height: 250px;
     border-radius: var(--radius-md);
   }
 }
 
-/* ===== ANIMACIONES SUTILES ABOUT ===== */
+/* ============================================
+   ANIMACIONES DE ENTRADA
+   ============================================ */
+
+/* Animaciones solo si el usuario no prefiere movimiento reducido */
 @media (prefers-reduced-motion: no-preference) {
+
+  /* Hero content se desliza desde arriba */
   .about-hero-content {
     animation: fadeInDown 0.8s ease-out;
   }
-  
+
+  /* Texto se desliza desde la derecha con delay */
   .about-text {
     animation: slideInRight 0.8s ease-out 0.3s both;
+    /* 0.3s delay */
   }
-  
+
+  /* Imagen se desliza desde la izquierda con más delay */
   .about-image {
     animation: slideInLeft 0.8s ease-out 0.5s both;
+    /* 0.5s delay */
   }
 }
 
+/* Keyframes: Aparece y desciende desde arriba */
 @keyframes fadeInDown {
   from {
     opacity: 0;
     transform: translateY(-30px);
+    /* Comienza 30px arriba */
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+    /* Termina en posición normal */
   }
 }
 
+/* Keyframes: Se desliza desde la izquierda */
 @keyframes slideInLeft {
   from {
     opacity: 0;
     transform: translateX(-50px);
+    /* Comienza 50px a la izquierda */
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
+    /* Termina en posición normal */
   }
 }
 
+/* Keyframes: Se desliza desde la derecha */
 @keyframes slideInRight {
   from {
     opacity: 0;
     transform: translateX(50px);
+    /* Comienza 50px a la derecha */
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
+    /* Termina en posición normal */
   }
 }
 
-/* Respeta las preferencias de accesibilidad para movimiento reducido */
+/* ============================================
+   ACCESIBILIDAD - MOVIMIENTO REDUCIDO
+   ============================================ */
+
+/* Deshabilita animaciones para usuarios que prefieren movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
+
+  /* Elimina efecto hover de la imagen */
   .about-image img:hover {
     transform: none;
+    /* Sin transformación */
   }
-  
+
+  /* Elimina todas las animaciones de entrada */
   .about-hero-content,
   .about-text,
   .about-image {
