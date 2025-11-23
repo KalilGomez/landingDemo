@@ -1,14 +1,112 @@
+<!-- ============================================
+     DOCUMENTO HTML PRINCIPAL
+     Archivo index.html - Punto de entrada de la aplicación Angular
+     ============================================ -->
+
 <!doctype html>
 <html lang="en">
+
+<!-- ============================================
+     HEAD - METADATOS Y RECURSOS
+     ============================================ -->
+
 <head>
+  <!-- === CONFIGURACIÓN BÁSICA === -->
+
+  <!-- 
+    Codificación de caracteres UTF-8
+    Permite usar caracteres especiales, acentos, emojis, etc.
+  -->
   <meta charset="utf-8">
-  <title>OPTICA OMEGA</title>
+
+  <!-- 
+    Título de la página mostrado en:
+    - Pestaña del navegador
+    - Resultados de búsqueda de Google
+    - Marcadores del navegador
+  -->
+  <title>Landing Demo</title>
+
+  <!-- 
+    Base HREF - Ruta base para todas las URLs relativas
+    Importante para:
+    - Enrutamiento de Angular (routing)
+    - Resolución de assets (imágenes, CSS, JS)
+    - Debe coincidir con la ruta de deploy (ej: "/" para root, "/app/" para subdirectorio)
+  -->
   <base href="/">
+
+  <!-- 
+    Viewport Meta Tag - Configuración para responsive design
+    - width=device-width: ancho del viewport = ancho del dispositivo
+    - initial-scale=1: zoom inicial al 100% (sin zoom)
+    Crítico para que el sitio sea mobile-friendly
+  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- === FAVICON === -->
+
+  <!-- 
+    Icono de la página mostrado en:
+    - Pestaña del navegador
+    - Barra de direcciones
+    - Marcadores
+    - Historial de navegación
+    
+    type="image/x-icon": especifica que es un archivo .ico
+    href="favicon.ico": ubicado en la carpeta /public o /src
+  -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- === ESTILOS EXTERNOS === -->
+
+  <!-- 
+    Font Awesome 5.15.3 - Biblioteca de íconos
+    
+    Uso en la aplicación:
+    - Íconos del navbar (bi bi-house, bi bi-eyeglasses, etc.)
+    - Íconos de contacto (bi bi-telephone-fill, bi bi-envelope-fill)
+    - Íconos de footer (bi bi-instagram, bi bi-facebook-f)
+    - Íconos de enlaces (bi bi-angle-right)
+    
+    CDN: Cloudflare (rápido y confiable)
+    Versión: 5.15.3 (estable)
+    
+    Alternativas:
+    - Bootstrap Icons (bi bi-*) se usa en lugar de Font Awesome en algunos componentes
+    - Para producción considerar: self-hosting o tree-shaking para reducir tamaño
+  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
+<!-- ============================================
+     BODY - CONTENEDOR DE LA APLICACIÓN
+     ============================================ -->
+
 <body>
+  <!-- 
+    Componente raíz de Angular
+    
+    <app-root></app-root> es el selector del componente principal (AppComponent)
+    
+    Proceso de carga:
+    1. El navegador carga index.html
+    2. Angular CLI inyecta los bundles JS (main.js, polyfills.js, etc.)
+    3. Angular bootstrapea la aplicación
+    4. Reemplaza <app-root> con el template de AppComponent
+    5. Renderiza toda la estructura de componentes
+    
+    Dentro de app-root se cargan:
+    - NavbarComponent
+    - Componentes de rutas (Home, About, Contact, etc.)
+    - FooterComponent
+    
+    Importante:
+    - Este es el único elemento en el body (SPA - Single Page Application)
+    - Todo el contenido dinámico se renderiza dentro de este componente
+    - Angular maneja el routing sin recargar la página
+  -->
   <app-root></app-root>
 </body>
+
 </html>

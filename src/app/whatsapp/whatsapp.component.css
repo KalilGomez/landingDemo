@@ -1,32 +1,85 @@
-/* Estilo para el botón de WhatsApp */
+/* ============================================
+   WHATSAPP.COMPONENT.CSS - ESTILOS DEL BOTÓN FLOTANTE
+   ============================================ */
+
+/**
+ * Este archivo define los estilos del botón flotante de WhatsApp.
+ * 
+ * Características principales:
+ * - Posición fija para mantenerse visible en toda la navegación.
+ * - Animación al hacer hover.
+ * - Adaptación responsive para pantallas pequeñas.
+ */
+
+/* ============================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ============================================ */
+
+/**
+ * .whatsapp-button
+ *
+ * - position: fixed → permite que el botón quede siempre visible.
+ * - bottom / right → ubicación en la esquina inferior derecha.
+ * - background-color → verde característico de WhatsApp.
+ * - border-radius: 50% → crea el botón circular.
+ * - box-shadow → agrega una sombra elegante y moderna.
+ * - transition → suaviza la animación al pasar el mouse.
+ * - z-index alto para estar sobre cualquier otro elemento.
+ * - display flex → centra el ícono dentro del círculo.
+ */
 .whatsapp-button {
   position: fixed;
-  bottom: 20px; /* Espacio desde el borde inferior */
-  right: 20px;  /* Espacio desde el borde derecho */
-  background-color: #25d366; /* Color de fondo de WhatsApp */
+  bottom: 20px; 
+  right: 20px;  
+  background-color: #25d366; 
   border-radius: 50%;
   padding: 15px;
   font-size: 24px;
   color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1000; /* Asegura que esté encima de otros elementos */
+  z-index: 1000; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* ============================================
+   HOVER
+   ============================================ */
+
+/**
+ * Efecto al pasar el mouse:
+ * - Aumenta el tamaño del botón (scale)
+ * - Incrementa la sombra para más profundidad
+ */
 .whatsapp-button:hover {
-  transform: scale(1.1); /* Aumentar el tamaño del botón en hover */
+  transform: scale(1.1); 
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* ============================================
+   ÍCONO DEL BOTÓN
+   ============================================ */
+
+/**
+ * .whatsapp-button i
+ *
+ * - Tamaño del ícono interno.
+ * - El color se mantiene en blanco.
+ */
 .whatsapp-button i {
-  font-size: 32px; /* Asegura que el ícono sea lo suficientemente grande */
+  font-size: 32px; 
   color: white;
 }
 
-/* Hacer el botón más pequeño en dispositivos móviles */
+/* ============================================
+   RESPONSIVE
+   --------------------------------------------
+   Ajustes para pantallas pequeñas (≤ 768px)
+   - Reduce el padding y el tamaño del ícono
+   - Mantiene la usabilidad sin ocupar demasiado espacio
+   ============================================ */
 @media (max-width: 768px) {
   .whatsapp-button {
     padding: 10px;

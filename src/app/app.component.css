@@ -1,5 +1,29 @@
-/* app.component.css - ESTRUCTURA LIMPIA Y ORDENADA */
+/* ============================================
+   APP.COMPONENT.CSS - ESTILOS GENERALES DE LA APP
+   ============================================ */
 
+/**
+ * Este archivo define los estilos globales aplicados al layout principal
+ * del componente raíz.
+ * 
+ * Aquí se manejan:
+ * - Espaciados globales
+ * - Comportamiento del scroll
+ * - Fondos de cada sección
+ * - Ajustes responsive para dispositivos móviles
+ */
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+
+/**
+ * .app-wrapper
+ *
+ * - scroll-behavior: smooth → activa el desplazamiento suave entre secciones.
+ * - overflow-x: hidden → evita desplazamientos horizontales indeseados.
+ * - width / min-height → asegura que la app ocupe toda la pantalla.
+ */
 .app-wrapper {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -7,50 +31,96 @@
   min-height: 100vh;
 }
 
+/* ============================================
+   MAIN (CONTENIDO CENTRAL)
+   ============================================ */
+
+/**
+ * main
+ *
+ * - padding-top: deja espacio para el navbar fijo.
+ * - min-height y width → garantiza que el contenido ocupe el alto completo.
+ */
 main {
   padding-top: 80px;
   min-height: 100vh;
   width: 100%;
 }
 
-/* ESPACIADO UNIFORME PARA TODAS LAS SECCIONES */
-main > section {
+/**
+ * main > section
+ *
+ * - scroll-margin-top: define el punto exacto al que se hace scroll al navegar.
+ * - position: relative → permite usar elementos posicionales dentro de cada sección.
+ */
+main>section {
   scroll-margin-top: 80px;
   position: relative;
 }
 
-/* Secciones sin padding propio - los componentes internos manejan su spacing */
+/* ============================================
+   SECCIONES PRINCIPALES
+   ============================================ */
+
+/**
+ * #home
+ * Sección inicial con fondo blanco.
+ */
 #home {
   background: #ffffff;
 }
 
+/**
+ * #productos
+ * Padding vertical usando variables personalizadas (tokens de diseño).
+ */
 #productos {
   background: #ffffff;
   padding: var(--spacing-3xl) 0;
 }
 
+/**
+ * #servicios
+ * Sección sin padding adicional.
+ */
 #servicios {
   background: #ffffff;
   padding: 0;
 }
 
+/**
+ * #acerca-de
+ */
 #acerca-de {
   background: #ffffff;
   padding: var(--spacing-3xl) 0;
 }
 
+/**
+ * #contacto
+ */
 #contacto {
   background: #ffffff;
   padding: var(--spacing-3xl) 0;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/**
+ * Pantallas ≤ 768px (tablets)
+ *
+ * - Reduce el padding superior del main por la altura menor del navbar.
+ * - Ajusta scroll-margin-top para mantener la navegación precisa.
+ * - Reduce padding de las secciones para un layout más compacto.
+ */
 @media (max-width: 768px) {
   main {
     padding-top: 70px;
   }
 
-  main > section {
+  main>section {
     scroll-margin-top: 70px;
   }
 
@@ -62,12 +132,18 @@ main > section {
   }
 }
 
+/**
+ * Pantallas ≤ 480px (celulares)
+ *
+ * - Ajustes adicionales para pantallas pequeñas.
+ * - Padding reducido para mejorar visibilidad del contenido.
+ */
 @media (max-width: 480px) {
   main {
     padding-top: 65px;
   }
 
-  main > section {
+  main>section {
     scroll-margin-top: 65px;
   }
 
