@@ -1,59 +1,95 @@
-/* Estilos actualizados para el navbar de Optica Omega - PALETA CONSISTENTE */
+/* ============================================
+   NAVBAR PRINCIPAL - BARRA DE NAVEGACIÓN FIJA
+   ============================================ */
+
+/* Barra de navegación fija con efecto glassmorphism */
 .navbar {
   background: rgba(255, 255, 255, 0.95);
+  /* Fondo blanco semi-transparente */
   backdrop-filter: blur(20px);
+  /* Efecto de desenfoque para glassmorphism */
   -webkit-backdrop-filter: blur(20px);
+  /* Compatibilidad con Safari */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  /* Sombra sutil */
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  /* Borde inferior translúcido */
   position: fixed;
+  /* Fija en la parte superior al hacer scroll */
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  /* Mantiene navbar por encima de otros elementos */
   height: 80px;
+  /* Altura inicial */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Transición suave con curva de aceleración */
 }
 
+/* Estado del navbar cuando se hace scroll - se hace más compacto */
 .navbar.scrolled {
   height: 70px;
+  /* Reduce altura al hacer scroll */
   background: rgba(255, 255, 255, 0.98);
+  /* Fondo más opaco */
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
+  /* Sombra más pronunciada */
 }
 
+/* ============================================
+   CONTENEDOR PRINCIPAL DEL NAVBAR
+   ============================================ */
+
+/* Contenedor interno con ancho máximo y distribución flex */
 .navbar-container {
   max-width: 1400px;
+  /* Ancho máximo del contenido */
   margin: 0 auto;
+  /* Centra horizontalmente */
   padding: 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
   gap: 3rem;
+  /* Espaciado entre elementos */
 }
 
-/* Logo Section - Mejorado */
+/* ============================================
+   SECCIÓN DEL LOGO
+   ============================================ */
+
+/* Contenedor del logo con z-index alto para mantenerlo visible */
 .nav-logo {
   display: flex;
   align-items: center;
   z-index: 1001;
+  /* Por encima del menú móvil */
   margin-right: auto;
+  /* Empuja el menú hacia la derecha */
 }
 
+/* Link del logo con efectos hover */
 .logo-link {
   display: flex;
   align-items: center;
   text-decoration: none;
   gap: 16px;
+  /* Espacio entre icono y texto */
   padding: 8px;
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
+/* Efecto hover del logo: elevación sutil */
 .logo-link:hover {
   background: transparent;
   transform: translateY(-1px);
+  /* Eleva ligeramente */
 }
 
+/* Contenedor del icono del logo */
 .logo-icon {
   display: flex;
   align-items: center;
@@ -63,17 +99,21 @@
   position: relative;
 }
 
+/* Imagen del logo con transición suave */
 .logo-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  /* Mantiene proporción de la imagen */
   transition: all 0.4s ease;
 }
 
+/* Animación del logo en hover: rotación y escala */
 .logo-link:hover .logo-img {
   transform: rotate(5deg) scale(1.05);
 }
 
+/* Contenedor del texto del logo (stack vertical) */
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -81,76 +121,99 @@
   gap: 2px;
 }
 
+/* Texto "ÓPTICA" / parte superior del logo */
 .logo-optica {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: #1F2937;
+  /* Gris oscuro */
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
+/* Texto "OMEGA" / parte inferior del logo en color corporativo */
 .logo-omega {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: #B91C1C;
+  /* Rojo corporativo */
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-/* Navigation Menu - Con paleta consistente */
+/* ============================================
+   MENÚ DE NAVEGACIÓN DESKTOP
+   ============================================ */
+
+/* Contenedor de enlaces de navegación */
 .navbar-menu {
   display: flex;
   align-items: center;
   gap: 12px;
+  /* Espaciado entre enlaces */
   margin-left: auto;
+  /* Alinea a la derecha */
 }
 
+/* Estilo base de cada enlace de navegación */
 .nav-link {
   display: flex;
   align-items: center;
   gap: 10px;
+  /* Espacio entre ícono y texto */
   text-decoration: none;
   color: #6B7280;
+  /* Gris medio */
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
   font-weight: 500;
   padding: 12px 20px;
   border-radius: 25px;
+  /* Bordes muy redondeados (pill shape) */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  /* Para posicionar pseudo-elemento */
   white-space: nowrap;
+  /* Evita que el texto se parta en líneas */
   overflow: hidden;
 }
 
-/* SOLUCIÓN: Pseudo-elemento para TODOS los nav-links */
+/* Efecto de fondo animado que se desliza desde la izquierda */
 .navbar-menu .nav-link::before {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
+  /* Comienza fuera de vista a la izquierda */
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, rgba(185, 28, 28, 0.1) 0%, rgba(153, 27, 27, 0.1) 100%);
   transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 25px;
   z-index: 1;
+  /* Detrás del contenido */
 }
 
+/* Anima el fondo para que se deslice a la vista en hover */
 .navbar-menu .nav-link:hover::before {
   left: 0;
+  /* Se desliza a su posición */
 }
 
+/* Efectos hover del enlace: cambio de color, fondo y elevación */
 .nav-link:hover,
 .nav-link.active:hover {
   color: #B91C1C;
+  /* Cambia a rojo corporativo */
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+  /* Eleva el enlace */
 }
 
-/* Estado activo igual para todos */
+/* Estado base y activo de los enlaces */
 .nav-link,
 .nav-link.active {
   color: #6B7280;
@@ -160,36 +223,48 @@
   border-bottom: none;
 }
 
+/* Indicador visual (no usado en este diseño) */
 .nav-indicator {
   display: none;
 }
 
+/* Íconos dentro de los enlaces de navegación */
 .nav-icon {
   font-size: 18px;
   display: flex;
   align-items: center;
   z-index: 2;
+  /* Por encima del pseudo-elemento ::before */
   position: relative;
   transition: transform 0.2s ease;
 }
 
+/* Agranda el ícono al hacer hover */
 .nav-link:hover .nav-icon {
   transform: scale(1.1);
 }
 
+/* Texto de los enlaces de navegación */
 .nav-text {
   font-size: 15px;
   z-index: 2;
+  /* Por encima del pseudo-elemento ::before */
   position: relative;
 }
 
-/* Mobile Menu Button - Con paleta consistente */
+/* ============================================
+   MENÚ HAMBURGUESA MÓVIL
+   ============================================ */
+
+/* Botón hamburguesa - oculto en desktop */
 .mobile-menu-button {
   display: none;
   z-index: 1002;
+  /* Por encima del overlay */
   margin-left: auto;
 }
 
+/* Estilo del botón hamburguesa */
 .hamburger {
   background: none;
   border: none;
@@ -197,38 +272,50 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  /* Espaciado entre las líneas */
   padding: 12px;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 
+/* Fondo rojo sutil en hover del hamburguesa */
 .hamburger:hover {
   background: rgba(185, 28, 28, 0.1);
 }
 
+/* Cada línea del icono hamburguesa */
 .hamburger span {
   width: 28px;
   height: 3px;
   background: linear-gradient(135deg, #B91C1C 0%, #991B1B 100%);
+  /* Gradiente rojo */
   border-radius: 2px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: center;
+  /* Punto de origen para rotación */
 }
 
+/* Animación de la primera línea cuando el menú está activo (forma X) */
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translate(8px, 8px);
 }
 
+/* La línea del medio desaparece */
 .hamburger.active span:nth-child(2) {
   opacity: 0;
   transform: scaleX(0);
 }
 
+/* Animación de la tercera línea (forma X) */
 .hamburger.active span:nth-child(3) {
   transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Overlay para mobile - Mejorado */
+/* ============================================
+   OVERLAY MÓVIL
+   ============================================ */
+
+/* Capa oscura de fondo cuando el menú móvil está abierto */
 .mobile-overlay {
   position: fixed;
   top: 0;
@@ -236,49 +323,71 @@
   right: 0;
   bottom: 0;
   background: rgba(31, 41, 55, 0.75);
+  /* Fondo oscuro semi-transparente */
   backdrop-filter: blur(8px);
+  /* Desenfoque del fondo */
   -webkit-backdrop-filter: blur(8px);
   opacity: 0;
+  /* Invisible por defecto */
   visibility: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 999;
+  /* Debajo del menú móvil pero sobre el contenido */
 }
 
+/* Overlay visible cuando está activo */
 .mobile-overlay.active {
   opacity: 1;
   visibility: visible;
 }
 
-/* Responsive Design */
+/* ============================================
+   RESPONSIVE DESIGN - TABLETS
+   ============================================ */
+
 @media (max-width: 1024px) {
+
+  /* Ajustes para tablets */
   .navbar-container {
     padding: 0 2rem;
+    /* Reduce padding horizontal */
     gap: 2rem;
   }
-  
+
+  /* Reduce espaciado entre enlaces */
   .navbar-menu {
     gap: 8px;
   }
-  
+
+  /* Enlaces más compactos en tablets */
   .nav-link {
     padding: 10px 16px;
     font-size: 14px;
   }
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MÓVIL
+   ============================================ */
+
 @media (max-width: 768px) {
+
+  /* Reduce altura del navbar en móvil */
   .navbar {
     height: 70px;
   }
-  
+
+  /* Contenedor con grid de 3 columnas: espacio vacío | logo | hamburguesa */
   .navbar-container {
     padding: 0 1.5rem;
     gap: 0;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
+    /* Logo centrado */
     align-items: center;
   }
 
+  /* Logo centrado en la columna del medio */
   .nav-logo {
     grid-column: 2;
     margin-right: 0;
@@ -286,10 +395,12 @@
     justify-self: center;
   }
 
+  /* Oculta el menú desktop */
   .navbar-menu {
     display: none;
   }
 
+  /* Muestra el botón hamburguesa en la columna derecha */
   .mobile-menu-button {
     display: block;
     grid-column: 3;
@@ -297,35 +408,44 @@
     margin-left: 0;
   }
 
-  /* Menu móvil mejorado con animaciones */
+  /* === MENÚ LATERAL MÓVIL === */
+
+  /* Panel lateral deslizante desde la derecha */
   .navbar-menu.mobile-open {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 70px;
+    /* Debajo del navbar */
     right: 0;
     width: 340px;
     max-width: 85vw;
+    /* Máximo 85% del ancho de pantalla */
     height: calc(100vh - 70px);
-    background: linear-gradient(180deg, 
-      rgba(255, 255, 255, 0.98) 0%, 
-      rgba(249, 250, 251, 0.98) 100%);
+    /* Resto de la pantalla */
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(249, 250, 251, 0.98) 100%);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border-left: 1px solid rgba(185, 28, 28, 0.1);
     box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+    /* Sombra hacia la izquierda */
     padding: 2.5rem 1.5rem;
     gap: 6px;
     overflow-y: auto;
+    /* Scroll si el contenido es muy largo */
     transform: translateX(100%);
+    /* Oculto fuera de pantalla a la derecha */
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  /* Desliza el menú a la vista */
   .navbar-menu.mobile-open.show {
     transform: translateX(0);
   }
 
-  /* Estilos específicos para links en móvil */
+  /* Enlaces del menú móvil con estilo card */
   .navbar-menu.mobile-open .nav-link {
     padding: 18px 24px;
     border-radius: 16px;
@@ -335,13 +455,16 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     margin-bottom: 4px;
     transform: translateX(20px);
+    /* Preparado para animación de entrada */
     opacity: 0;
     animation: slideInMenu 0.4s ease forwards;
+    /* Anima la entrada */
     width: 100%;
     justify-content: center;
     gap: 12px;
   }
 
+  /* Retrasos escalonados para cada enlace (efecto cascada) */
   .navbar-menu.mobile-open.show .nav-link:nth-child(1) {
     animation-delay: 0.1s;
   }
@@ -362,6 +485,7 @@
     animation-delay: 0.3s;
   }
 
+  /* Animación de deslizamiento hacia la izquierda */
   @keyframes slideInMenu {
     to {
       transform: translateX(0);
@@ -369,40 +493,46 @@
     }
   }
 
+  /* Efectos hover/active en menú móvil */
   .navbar-menu.mobile-open .nav-link:hover,
   .navbar-menu.mobile-open .nav-link:active {
-    background: linear-gradient(135deg, 
-      rgba(185, 28, 28, 0.08) 0%, 
-      rgba(153, 27, 27, 0.08) 100%);
+    background: linear-gradient(135deg,
+        rgba(185, 28, 28, 0.08) 0%,
+        rgba(153, 27, 27, 0.08) 100%);
     border-color: rgba(185, 28, 28, 0.15);
     transform: translateX(-4px);
+    /* Desplaza ligeramente a la izquierda */
     box-shadow: 0 4px 16px rgba(185, 28, 28, 0.15);
   }
 
+  /* Estilo del enlace activo en menú móvil */
   .navbar-menu.mobile-open .nav-link.active {
-    background: linear-gradient(135deg, 
-      rgba(185, 28, 28, 0.12) 0%, 
-      rgba(153, 27, 27, 0.12) 100%);
+    background: linear-gradient(135deg,
+        rgba(185, 28, 28, 0.12) 0%,
+        rgba(153, 27, 27, 0.12) 100%);
     border-color: rgba(185, 28, 28, 0.2);
     color: #B91C1C;
     font-weight: 600;
   }
 
+  /* Íconos en menú móvil */
   .navbar-menu.mobile-open .nav-icon {
     font-size: 20px;
     color: #B91C1C;
   }
 
+  /* Texto en menú móvil */
   .navbar-menu.mobile-open .nav-text {
     font-size: 16px;
     font-weight: 500;
   }
 
+  /* Oculta indicador en menú móvil */
   .navbar-menu.mobile-open .nav-indicator {
     display: none;
   }
 
-  /* Ajustar tamaño del logo en mobile pero mantener texto */
+  /* Ajustes de tamaño del logo en móvil */
   .logo-icon {
     width: 40px;
     height: 40px;
@@ -418,11 +548,18 @@
   }
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MÓVILES PEQUEÑOS
+   ============================================ */
+
 @media (max-width: 480px) {
+
+  /* Navbar aún más compacto */
   .navbar {
     height: 65px;
   }
-  
+
+  /* Mantiene estructura de grid de 3 columnas */
   .navbar-container {
     padding: 0 1rem;
     gap: 0;
@@ -431,6 +568,7 @@
     align-items: center;
   }
 
+  /* Logo centrado */
   .nav-logo {
     grid-column: 2;
     margin-right: 0;
@@ -438,12 +576,14 @@
     justify-self: center;
   }
 
+  /* Hamburguesa a la derecha */
   .mobile-menu-button {
     grid-column: 3;
     justify-self: end;
     margin-left: 0;
   }
 
+  /* Logo más pequeño */
   .logo-icon {
     width: 36px;
     height: 36px;
@@ -457,15 +597,18 @@
   .logo-link {
     gap: 10px;
   }
-  
+
+  /* Menú móvil ocupa toda la pantalla */
   .navbar-menu.mobile-open {
     top: 65px;
     height: calc(100vh - 65px);
     width: 100%;
+    /* Ancho completo */
     max-width: 100vw;
     padding: 2rem 1rem;
   }
 
+  /* Enlaces más compactos en pantallas pequeñas */
   .navbar-menu.mobile-open .nav-link {
     padding: 16px 20px;
     font-size: 15px;
@@ -483,30 +626,45 @@
   }
 }
 
-/* Smooth scroll compensation */
+/* ============================================
+   UTILIDADES Y ANIMACIONES GLOBALES
+   ============================================ */
+
+/* Ajusta el scroll de anclas para compensar el navbar fijo */
 html {
   scroll-padding-top: 90px;
+  /* Espacio superior al hacer scroll a anclas */
 }
 
-/* Animation for page load */
+/* Animación de entrada del navbar al cargar la página */
 .navbar {
   animation: slideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Keyframes para animación de deslizamiento desde arriba */
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
+    /* Comienza arriba, fuera de vista */
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
+    /* Termina en posición normal */
     opacity: 1;
   }
 }
 
-/* Focus states for accessibility */
+/* ============================================
+   ACCESIBILIDAD
+   ============================================ */
+
+/* Outline visible para navegación por teclado */
 .nav-link:focus,
 .hamburger:focus {
   outline: 2px solid #B91C1C;
+  /* Borde rojo visible */
   outline-offset: 2px;
+  /* Separación del outline */
 }

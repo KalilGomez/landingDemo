@@ -1,27 +1,42 @@
-/* ===== CONTACT CONTAINER STYLES ===== */
+/* ============================================
+   CONTENEDOR PRINCIPAL - CONTACT SECTION
+   ============================================ */
 
-/* Contenedor principal del contact */
+/* Contenedor principal con ancho máximo y centrado */
 .contact-container {
   width: 100%;
   max-width: 1200px;
+  /* Ancho máximo para mantener legibilidad */
   margin: 0 auto;
+  /* Centra horizontalmente */
   padding: 0 var(--spacing-md);
+  /* Padding lateral usando variable CSS */
   min-height: auto;
   overflow-x: hidden;
+  /* Previene scroll horizontal no deseado */
 }
 
-/* ===== HERO SECTION STYLES ===== */
+/* ============================================
+   HERO SECTION - ENCABEZADO
+   ============================================ */
+
+/* Hero section con gradiente de fondo y decoración circular */
 .contact-container .hero-section {
   background: linear-gradient(135deg, #F9FAFB 0%, #E5E7EB 100%);
+  /* Gradiente gris claro */
   padding: var(--spacing-2xl) 0;
   position: relative;
+  /* Necesario para posicionar pseudo-elemento decorativo */
   overflow: hidden;
+  /* Oculta el círculo decorativo que se sale del contenedor */
   border-radius: var(--radius-lg);
   margin-bottom: var(--spacing-2xl);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  /* Sombra sutil */
   border-bottom: none;
 }
 
+/* Elemento decorativo circular en la esquina superior derecha */
 .contact-container .hero-section::before {
   content: '';
   position: absolute;
@@ -30,87 +45,124 @@
   width: 200px;
   height: 200px;
   background: radial-gradient(circle, rgba(185, 28, 28, 0.1) 0%, transparent 70%);
+  /* Gradiente radial rojo translúcido */
   border-radius: 50%;
+  /* Forma circular */
   transform: translate(50%, -50%);
+  /* Posiciona parcialmente fuera del contenedor */
 }
 
+/* Contenedor del contenido del hero con z-index para estar sobre el decorativo */
 .contact-hero-content {
   position: relative;
   z-index: 1;
+  /* Por encima del pseudo-elemento ::before */
   padding: 0 var(--spacing-md);
 }
 
+/* === TÍTULO PRINCIPAL DEL HERO === */
+
+/* Título H1 con estilo destacado */
 .contact-container .hero-section h1 {
   color: #1F2937;
+  /* Gris oscuro */
   font-size: var(--font-5xl);
+  /* Tamaño extra grande */
   margin-bottom: var(--spacing-lg);
   font-weight: 700;
+  /* Negrita */
   position: relative;
+  /* Para posicionar la línea decorativa */
   padding-bottom: 0;
 }
 
+/* Línea decorativa roja debajo del título */
 .contact-container .hero-section h1::after {
   content: '';
   position: absolute;
   bottom: -12px;
+  /* 12px debajo del texto */
   left: 50%;
   transform: translateX(-50%);
+  /* Centra horizontalmente */
   width: 100px;
   height: 4px;
   background: linear-gradient(90deg, #B91C1C, #991B1B);
+  /* Gradiente rojo */
   border-radius: 2px;
 }
 
+/* Texto descriptivo (lead) del hero */
 .contact-container .hero-section .lead {
   color: #6B7280;
+  /* Gris medio */
   font-size: var(--font-lg);
   max-width: 600px;
+  /* Ancho máximo para mejorar legibilidad */
   margin: 0 auto;
+  /* Centra el texto */
 }
 
-/* ===== CONTACT CONTENT STYLES - GRID AJUSTADO ===== */
+/* ============================================
+   CONTENIDO PRINCIPAL
+   ============================================ */
+
+/* Contenedor del contenido de contacto */
 .contact-content {
   padding: var(--spacing-2xl) 0;
 }
 
+/* Grid personalizado: 60% formulario, 40% información */
 .contact-content-grid {
   display: grid !important;
+  /* !important para sobrescribir Bootstrap */
   grid-template-columns: 60% 40% !important;
+  /* Proporción 3:2 */
   gap: var(--spacing-2xl);
   align-items: flex-start;
+  /* Alinea al inicio (top) */
   width: 100%;
   margin: 0 !important;
 }
 
-/* Sobrescribir las clases de Bootstrap col-md-6 */
-.contact-content-grid > .col-md-6 {
+/* Sobrescribe estilos de Bootstrap para las columnas */
+.contact-content-grid>.col-md-6 {
   max-width: 100% !important;
   flex: none !important;
   width: 100% !important;
   padding: 0 !important;
 }
 
-.contact-content-grid > .col-md-6:first-child {
+/* Primera columna (formulario) en la grid column 1 */
+.contact-content-grid>.col-md-6:first-child {
   grid-column: 1;
 }
 
-.contact-content-grid > .col-md-6:last-child {
+/* Segunda columna (info) en la grid column 2 */
+.contact-content-grid>.col-md-6:last-child {
   grid-column: 2;
 }
 
-/* ===== FORMULARIO DE CONTACTO ===== */
+/* ============================================
+   FORMULARIO DE CONTACTO
+   ============================================ */
+
+/* Contenedor del formulario con borde superior decorativo */
 .contact-form {
   background: #FFFFFF;
   padding: var(--spacing-2xl) var(--spacing-2xl);
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border: 1px solid #f1f3f4;
+  /* Borde gris muy claro */
   position: relative;
+  /* Para el borde superior decorativo */
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
 }
 
+/* Barra decorativa roja en la parte superior del formulario */
 .contact-form::before {
   content: '';
   position: absolute;
@@ -119,66 +171,90 @@
   right: 0;
   height: 4px;
   background: linear-gradient(90deg, #B91C1C, #991B1B);
+  /* Gradiente rojo */
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  /* Solo redondea esquinas superiores */
 }
 
+/* === GRUPOS DE FORMULARIO === */
+
+/* Cada grupo de campo (label + input/textarea) */
 .form-group {
   margin-bottom: var(--spacing-lg);
   width: 100%;
 }
 
+/* Labels de los campos del formulario */
 .form-group label {
   display: block;
   margin-bottom: var(--spacing-xs);
   font-weight: 600;
+  /* Semi-negrita */
   color: #1F2937;
   font-size: var(--font-base);
 }
 
+/* Asterisco rojo para campos requeridos */
 .required {
   color: #dc3545;
+  /* Rojo Bootstrap danger */
   font-weight: bold;
 }
 
-/* Inputs y Textarea */
+/* Estilos base para inputs y textareas */
 .form-group input,
 .form-group textarea {
   width: 100%;
   max-width: 100%;
   padding: var(--spacing-md) var(--spacing-lg);
   border: 2px solid #e9ecef;
+  /* Borde gris claro */
   border-radius: var(--radius-md);
   font-size: var(--font-base);
   font-family: inherit;
+  /* Hereda la fuente del body */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   background-color: #FFFFFF;
   color: #1F2937;
   box-sizing: border-box;
 }
 
+/* Estado focus de inputs y textareas - borde rojo y shadow */
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
+  /* Elimina outline por defecto del navegador */
   border-color: #B91C1C;
+  /* Borde rojo corporativo */
   box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.1);
+  /* Shadow rojo translúcido */
 }
 
+/* Estilo del placeholder */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: #6B7280;
+  /* Gris medio */
   opacity: 0.7;
 }
 
+/* Configuración específica para textarea */
 .form-group textarea {
   resize: vertical;
+  /* Solo permite redimensionar verticalmente */
   min-height: 120px;
+  /* Altura mínima */
   line-height: 1.5;
+  /* Espaciado de línea para mejor legibilidad */
 }
 
-/* Botón del formulario */
+/* === BOTÓN DE ENVÍO === */
+
+/* Botón de submit con gradiente rojo */
 .contact-form button[type="submit"] {
   width: 100%;
   background: linear-gradient(135deg, #B91C1C, #991B1B);
+  /* Gradiente rojo */
   color: #FFFFFF;
   padding: var(--spacing-md) var(--spacing-xl);
   border: none;
@@ -188,32 +264,47 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
+  /* Texto en mayúsculas */
   letter-spacing: 0.5px;
+  /* Espaciado entre letras */
 }
 
+/* Efecto hover del botón: elevación y sombra */
 .contact-form button[type="submit"]:hover {
   transform: translateY(-2px);
+  /* Eleva 2px */
   box-shadow: 0 4px 12px rgba(185, 28, 28, 0.3);
+  /* Sombra roja */
 }
 
+/* Efecto al hacer click (active) */
 .contact-form button[type="submit"]:active {
   transform: translateY(0);
+  /* Regresa a posición original */
 }
 
-/* ===== INFORMACIÓN DE CONTACTO - MÁS COMPACTO ===== */
+/* ============================================
+   INFORMACIÓN DE CONTACTO
+   ============================================ */
+
+/* Sección de información de contacto (teléfono, email, dirección) */
 .contact-info-section {
   padding: var(--spacing-lg) var(--spacing-md);
 }
 
+/* Títulos de sección en la info de contacto */
 .contact-info h5 {
   color: #1F2937;
   font-size: var(--font-lg);
   margin-bottom: var(--spacing-md);
   border-bottom: 3px solid #B91C1C;
+  /* Borde inferior rojo */
   padding-bottom: var(--spacing-xs);
   display: inline-block;
+  /* El borde solo se extiende al ancho del texto */
 }
 
+/* Párrafos de información */
 .contact-info p {
   color: #1F2937;
   font-size: var(--font-base);
@@ -221,203 +312,274 @@
   line-height: 1.6;
 }
 
+/* Texto en negrita (etiquetas como "Teléfono:", "Email:") */
 .contact-info strong {
   color: #1F2937;
   font-weight: 600;
 }
 
-/* Espaciado específico para horarios */
+/* Margen superior para títulos adicionales */
 .contact-info h5.mt-4 {
   margin-top: var(--spacing-xl);
 }
 
-/* ===== MAPA ===== */
+/* ============================================
+   MAPA DE GOOGLE
+   ============================================ */
+
+/* Sección del mapa */
 .mapa-section {
   margin-top: var(--spacing-2xl);
 }
 
+/* Contenedor del iframe del mapa */
 .mapa-container {
   width: 100%;
   height: 400px;
+  /* Altura fija */
   overflow: hidden;
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border: 1px solid #f1f3f4;
 }
 
+/* Iframe de Google Maps */
 .mapa-container iframe {
   width: 100%;
   height: 100%;
   border: none;
+  /* Elimina borde por defecto del iframe */
   display: block;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ============================================
+   RESPONSIVE DESIGN - TABLETS
+   ============================================ */
+
 @media (max-width: 768px) {
+
+  /* Reduce padding lateral */
   .contact-container {
     padding: 0 var(--spacing-sm);
   }
-  
+
+  /* Hero más compacto */
   .contact-container .hero-section {
     padding: var(--spacing-xl) 0;
     border-radius: var(--radius-md);
     margin-bottom: var(--spacing-xl);
   }
-  
+
+  /* Reduce tamaño del título */
   .contact-container .hero-section h1 {
     font-size: var(--font-4xl);
   }
-  
+
+  /* Reduce tamaño del lead */
   .contact-container .hero-section .lead {
     font-size: var(--font-base);
   }
-  
+
+  /* Ajusta padding del contenido */
   .contact-content {
     padding: var(--spacing-xl) 0;
   }
-  
+
+  /* Grid cambia a 1 columna (apilado vertical) */
   .contact-content-grid {
     grid-template-columns: 1fr;
+    /* Una sola columna */
     gap: var(--spacing-xl);
   }
-  
+
+  /* Reduce padding del formulario */
   .contact-form {
     padding: var(--spacing-lg);
   }
-  
+
+  /* Reduce padding de la sección de info */
   .contact-info-section {
     padding: var(--spacing-lg);
   }
-  
+
+  /* Reduce altura del mapa */
   .mapa-container {
     height: 300px;
     border-radius: var(--radius-md);
   }
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MÓVILES PEQUEÑOS
+   ============================================ */
+
 @media (max-width: 480px) {
+
+  /* Hero aún más compacto */
   .contact-container .hero-section {
     padding: var(--spacing-lg) 0;
   }
-  
+
+  /* Títulos más pequeños */
   .contact-container .hero-section h1 {
     font-size: var(--font-3xl);
   }
-  
+
   .contact-container .hero-section .lead {
     font-size: var(--font-sm);
   }
-  
+
+  /* Padding reducido */
   .contact-content {
     padding: var(--spacing-lg) 0;
   }
-  
+
+  /* Formulario más compacto */
   .contact-form {
     padding: var(--spacing-md);
   }
-  
+
   .contact-info-section {
     padding: var(--spacing-md);
   }
-  
+
+  /* Campos de formulario más pequeños */
   .form-group input,
   .form-group textarea {
     padding: var(--spacing-sm);
   }
-  
+
+  /* Botón más pequeño */
   .contact-form button[type="submit"] {
     padding: var(--spacing-sm) var(--spacing-md);
     font-size: var(--font-sm);
   }
-  
+
+  /* Mapa más pequeño */
   .mapa-container {
     height: 250px;
     border-radius: var(--radius-md);
   }
 }
 
-/* ===== ESTADOS DE VALIDACIÓN ===== */
+/* ============================================
+   VALIDACIÓN DE FORMULARIO
+   ============================================ */
+
+/* Campo inválido en focus - borde rojo */
 .form-group input:invalid:focus,
 .form-group textarea:invalid:focus {
   border-color: #dc3545;
+  /* Rojo de error */
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+  /* Shadow rojo */
 }
 
+/* Campo válido en focus - borde azul */
 .form-group input:valid:focus,
 .form-group textarea:valid:focus {
   border-color: #1E40AF;
+  /* Azul de éxito */
   box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  /* Shadow azul */
 }
 
-/* ===== ANIMACIONES SUTILES ===== */
+/* ============================================
+   ANIMACIONES DE ENTRADA
+   ============================================ */
+
+/* Animaciones solo si el usuario no prefiere movimiento reducido */
 @media (prefers-reduced-motion: no-preference) {
+
+  /* Hero content se desliza desde arriba */
   .contact-hero-content {
     animation: fadeInDown 0.8s ease-out;
   }
-  
+
+  /* Formulario se desliza desde la izquierda con delay */
   .contact-form {
     animation: slideInLeft 0.8s ease-out 0.3s both;
+    /* 0.3s delay */
   }
-  
+
+  /* Info de contacto se desliza desde la derecha con más delay */
   .contact-info-section {
     animation: slideInRight 0.8s ease-out 0.5s both;
+    /* 0.5s delay */
   }
-  
+
+  /* Mapa aparece desde abajo con el mayor delay */
   .mapa-section {
     animation: fadeInUp 0.8s ease-out 0.7s both;
+    /* 0.7s delay */
   }
 }
 
+/* Keyframes: Aparece y desciende desde arriba */
 @keyframes fadeInDown {
   from {
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+/* Keyframes: Se desliza desde la izquierda */
 @keyframes slideInLeft {
   from {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
+/* Keyframes: Se desliza desde la derecha */
 @keyframes slideInRight {
   from {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
+/* Keyframes: Aparece y sube desde abajo */
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Respeta las preferencias de accesibilidad */
+/* ============================================
+   ACCESIBILIDAD - MOVIMIENTO REDUCIDO
+   ============================================ */
+
+/* Deshabilita animaciones para usuarios que prefieren movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
+
+  /* Elimina transformación del botón en hover */
   .contact-form button[type="submit"]:hover {
     transform: none;
   }
-  
+
+  /* Elimina todas las animaciones de entrada */
   .contact-hero-content,
   .contact-form,
   .contact-info-section,
@@ -426,12 +588,20 @@
   }
 }
 
-/* ===== ESTADOS DE FOCUS PARA ACCESIBILIDAD ===== */
+/* ============================================
+   ESTADOS DE FOCUS MEJORADOS
+   ============================================ */
+
+/* Aumenta sombra cuando cualquier campo del formulario está en focus */
 .contact-form:focus-within {
   box-shadow: 0 8px 25px rgba(185, 28, 28, 0.1);
+  /* Shadow roja más pronunciada */
 }
 
+/* Outline visible para navegación por teclado en el botón */
 .contact-form button[type="submit"]:focus {
   outline: 2px solid #B91C1C;
+  /* Borde rojo visible */
   outline-offset: 2px;
+  /* Separación del outline */
 }

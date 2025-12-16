@@ -1,14 +1,19 @@
-/* ===== FOOTER MEJORADO - DISEÑO MODERNO Y LIMPIO ===== */
+/* ============================================
+   FOOTER PRINCIPAL
+   ============================================ */
 
+/* Contenedor principal del footer con gradiente oscuro de fondo */
 .footer {
   background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
   color: #E5E7EB;
   padding: 0;
   position: relative;
+  /* Necesario para posicionar la barra superior decorativa */
   overflow: hidden;
+  /* Oculta elementos que se salgan del contenedor */
 }
 
-/* Línea decorativa superior - integrada sin espacios */
+/* Barra decorativa superior con gradiente rojo y efecto de resplandor */
 .footer::before {
   content: '';
   position: absolute;
@@ -18,31 +23,42 @@
   height: 4px;
   background: linear-gradient(90deg, #B91C1C 0%, #991B1B 50%, #B91C1C 100%);
   box-shadow: 0 2px 8px rgba(185, 28, 28, 0.4);
+  /* Resplandor rojo sutil */
 }
 
-/* Contenedor principal del footer */
+/* ============================================
+   LAYOUT Y ESTRUCTURA DEL FOOTER
+   ============================================ */
+
+/* Contenedor interno con ancho máximo y centrado automático */
 .footer-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 3rem 2rem 0;
 }
 
-/* Grid principal del footer */
+/* Grid principal: 4 columnas en desktop (Logo grande, Enlaces, Info, Redes sociales) */
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1.5fr 1fr 0.5fr;
+  /* Proporciones: Logo > Enlaces > Info > Social */
   gap: 3rem;
   align-items: start;
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Línea divisoria sutil */
 }
 
-/* ===== SECCIÓN LOGO - Igual que navbar ===== */
+/* ============================================
+   SECCIÓN DEL LOGO
+   ============================================ */
+
 .footer-logo-section .nav-logo {
   display: flex;
   align-items: center;
 }
 
+/* Contenedor del logo con padding y efectos hover */
 .footer-logo-section .logo-link {
   display: flex;
   align-items: center;
@@ -54,11 +70,13 @@
   cursor: default;
 }
 
+/* Efecto hover: fondo rojo translúcido y elevación ligera */
 .footer-logo-section .logo-link:hover {
   background: rgba(185, 28, 28, 0.1);
   transform: translateY(-2px);
 }
 
+/* Contenedor del icono del logo con dimensiones fijas */
 .footer-logo-section .logo-icon {
   display: flex;
   align-items: center;
@@ -68,18 +86,22 @@
   position: relative;
 }
 
+/* Imagen del logo con brillo aumentado y transición suave */
 .footer-logo-section .logo-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   transition: all 0.4s ease;
   filter: brightness(1.2);
+  /* Hace el logo más visible sobre fondo oscuro */
 }
 
+/* Animación del logo en hover: rotación sutil y aumento de tamaño */
 .footer-logo-section .logo-link:hover .logo-img {
   transform: rotate(5deg) scale(1.05);
 }
 
+/* Contenedor del texto del logo (stack vertical) */
 .footer-logo-section .logo-text {
   display: flex;
   flex-direction: column;
@@ -87,6 +109,7 @@
   gap: 2px;
 }
 
+/* Texto "ÓPTICA" - parte superior del logo en blanco */
 .footer-logo-section .logo-optica {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 20px;
@@ -96,22 +119,29 @@
   text-transform: uppercase;
 }
 
+/* Texto "OMEGA" - parte inferior del logo en rojo (color corporativo) */
 .footer-logo-section .logo-omega {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #B91C1C;
+  /* Rojo corporativo */
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-/* ===== SECCIÓN INFO DE CONTACTO ===== */
+/* ============================================
+   SECCIÓN DE CONTACTO
+   ============================================ */
+
+/* Contenedor de información de contacto en columna */
 .footer-contact {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+/* Cada línea de contacto con ícono y texto */
 .footer-contact p {
   display: flex;
   align-items: center;
@@ -123,43 +153,55 @@
   transition: all 0.3s ease;
 }
 
+/* Íconos de contacto en color corporativo rojo */
 .footer-contact p i {
   color: #B91C1C;
   font-size: 16px;
   min-width: 20px;
+  /* Ancho fijo para alineación consistente */
   transition: transform 0.3s ease;
 }
 
+/* Efecto hover en líneas de contacto: color más claro y desplazamiento */
 .footer-contact p:hover {
   color: #E5E7EB;
   transform: translateX(5px);
 }
 
+/* Agranda el ícono al hacer hover */
 .footer-contact p:hover i {
   transform: scale(1.15);
 }
 
+/* Etiquetas de contacto (ej: "Teléfono:", "Email:") */
 .footer-contact p span {
   color: #9CA3AF;
 }
 
+/* Enlaces dentro de la sección de contacto */
 .footer-contact a {
   color: #E5E7EB;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
+/* Enlaces de contacto cambian a rojo en hover */
 .footer-contact a:hover {
   color: #B91C1C;
 }
 
-/* ===== SECCIÓN ENLACES DE NAVEGACIÓN ===== */
+/* ============================================
+   ENLACES RÁPIDOS DEL FOOTER
+   ============================================ */
+
+/* Contenedor de enlaces en columna vertical */
 .footer-links {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+/* Estilo individual de cada enlace con ícono */
 .footer-links a {
   display: flex;
   align-items: center;
@@ -170,9 +212,11 @@
   padding: 8px 0;
   transition: all 0.3s ease;
   position: relative;
+  /* Para posicionar el pseudo-elemento ::before */
   cursor: default;
 }
 
+/* Íconos de flecha en color corporativo */
 .footer-links a i {
   color: #B91C1C;
   font-size: 16px;
@@ -180,11 +224,13 @@
   transition: transform 0.3s ease;
 }
 
+/* Texto de los enlaces */
 .footer-links a span {
   color: #E5E7EB;
   transition: color 0.3s ease;
 }
 
+/* Línea animada que aparece desde la izquierda en hover */
 .footer-links a::before {
   content: '';
   position: absolute;
@@ -196,30 +242,39 @@
   transition: width 0.3s ease;
 }
 
+/* Expande la línea decorativa al 100% en hover */
 .footer-links a:hover::before {
   width: 100%;
 }
 
+/* Efecto hover: texto blanco y desplazamiento horizontal */
 .footer-links a:hover {
   color: #FFFFFF;
   transform: translateX(5px);
 }
 
+/* Cambia el color del span a blanco en hover */
 .footer-links a:hover span {
   color: #FFFFFF;
 }
 
+/* Agranda el ícono en hover */
 .footer-links a:hover i {
   transform: scale(1.15);
 }
 
-/* ===== SECCIÓN REDES SOCIALES ===== */
+/* ============================================
+   REDES SOCIALES
+   ============================================ */
+
+/* Contenedor de íconos sociales alineado a la derecha */
 .footer-social {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
 }
 
+/* Ícono circular de red social con fondo translúcido */
 .social-icon {
   display: flex;
   align-items: center;
@@ -227,46 +282,60 @@
   width: 44px;
   height: 44px;
   background: rgba(185, 28, 28, 0.1);
+  /* Fondo rojo translúcido */
   border-radius: 50%;
+  /* Forma circular */
   color: #B91C1C;
   transition: all 0.3s ease;
   text-decoration: none;
   cursor: pointer;
 }
 
+/* Efecto hover: fondo sólido rojo, elevación y sombra intensa */
 .social-icon:hover {
   background: #B91C1C;
   color: #FFFFFF;
   transform: translateY(-3px) scale(1.1);
+  /* Eleva y agranda */
   box-shadow: 0 6px 20px rgba(185, 28, 28, 0.4);
+  /* Sombra roja pronunciada */
 }
 
+/* Tamaño de los íconos Font Awesome */
 .social-icon i {
   font-size: 20px;
 }
 
-/* ===== SECCIÓN BOTTOM - COPYRIGHT ===== */
+/* ============================================
+   BARRA INFERIOR DEL FOOTER
+   ============================================ */
+
+/* Contenedor del copyright y enlaces legales */
 .footer-bottom {
   padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  /* Permite que se apilen en pantallas pequeñas */
   gap: 1rem;
 }
 
+/* Texto de copyright */
 .footer-bottom p {
   font-size: 13px;
   color: #9CA3AF;
   margin: 0;
 }
 
+/* Contenedor de enlaces legales (Términos, Privacidad) */
 .footer-bottom-links {
   display: flex;
   gap: 1.5rem;
   align-items: center;
 }
 
+/* Estilos de enlaces legales */
 .footer-bottom-links a {
   color: #9CA3AF;
   text-decoration: none;
@@ -275,55 +344,76 @@
   cursor: default;
 }
 
+/* Enlaces legales cambian a rojo en hover */
 .footer-bottom-links a:hover {
   color: #B91C1C;
 }
 
-/* ===== ESTILOS PARA MODALES ===== */
+/* ============================================
+   MODALES
+   ============================================ */
+
+/* Contenedor principal del modal con bordes redondeados */
 .modal-content {
   background: #FFFFFF;
   border-radius: 12px;
   border: none;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  /* Sombra profunda */
 }
 
+/* === HEADER DEL MODAL === */
+
+/* Cabecera del modal con gradiente rojo corporativo */
 .modal-header {
   background: linear-gradient(135deg, #B91C1C 0%, #991B1B 100%);
   color: #FFFFFF;
   border-radius: 12px 12px 0 0;
+  /* Redondea solo esquinas superiores */
   padding: 1.5rem;
   border-bottom: none;
 }
 
+/* Título del modal en negrita */
 .modal-title {
   font-weight: 700;
   font-size: 1.5rem;
   margin: 0;
 }
 
+/* Botón de cerrar invertido para verse blanco sobre fondo rojo */
 .modal-header .btn-close {
   filter: brightness(0) invert(1);
   opacity: 0.8;
 }
 
+/* Aumenta opacidad del botón cerrar en hover */
 .modal-header .btn-close:hover {
   opacity: 1;
 }
 
+/* === BODY DEL MODAL === */
+
+/* Cuerpo del modal con scroll si el contenido es muy largo */
 .modal-body {
   padding: 2rem;
   max-height: 70vh;
+  /* Máximo 70% del alto de la ventana */
   overflow-y: auto;
+  /* Scroll vertical si es necesario */
 }
 
+/* Cada sección dentro del modal */
 .modal-section {
   margin-bottom: 2rem;
 }
 
+/* Elimina margen inferior de la última sección */
 .modal-section:last-child {
   margin-bottom: 0;
 }
 
+/* Títulos de sección con borde inferior rojo */
 .modal-section h6 {
   color: #1F2937;
   font-weight: 700;
@@ -331,24 +421,30 @@
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #B91C1C;
+  /* Línea decorativa roja */
 }
 
+/* Párrafos dentro de las secciones del modal */
 .modal-section p {
   color: #6B7280;
   line-height: 1.7;
+  /* Mejora legibilidad */
   margin-bottom: 1rem;
 }
 
+/* Listas dentro del modal */
 .modal-section ul {
   color: #6B7280;
   line-height: 1.7;
   padding-left: 1.5rem;
 }
 
+/* Items de lista con separación */
 .modal-section ul li {
   margin-bottom: 0.5rem;
 }
 
+/* Enlaces dentro del contenido del modal */
 .modal-section a {
   color: #B91C1C;
   text-decoration: none;
@@ -356,28 +452,35 @@
   transition: color 0.3s ease;
 }
 
+/* Enlaces del modal más oscuros en hover con subrayado */
 .modal-section a:hover {
   color: #991B1B;
   text-decoration: underline;
 }
 
+/* Texto del pie del modal con borde superior */
 .modal-footer-text {
   margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid #E5E7EB;
 }
 
+/* Texto pequeño en pie del modal */
 .modal-footer-text p {
   color: #9CA3AF;
   font-size: 0.875rem;
   margin: 0;
 }
 
+/* === FOOTER DEL MODAL === */
+
+/* Pie del modal con botones de acción */
 .modal-footer {
   padding: 1rem 2rem;
   border-top: 1px solid #E5E7EB;
 }
 
+/* Botón secundario del modal (ej: Cerrar) */
 .modal-footer .btn-secondary {
   background: #6B7280;
   border: none;
@@ -386,131 +489,173 @@
   transition: all 0.3s ease;
 }
 
+/* Efecto hover del botón: oscurece, eleva y agrega sombra */
 .modal-footer .btn-secondary:hover {
   background: #4B5563;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ============================================
+   RESPONSIVE DESIGN - TABLETS
+   ============================================ */
+
 @media (max-width: 1024px) {
+
+  /* Grid cambia a 2 columnas en tablets */
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
   }
 
+  /* Logo ocupa toda la fila superior */
   .footer-logo-section {
     grid-column: 1 / -1;
+    /* Span completo */
   }
 
+  /* Redes sociales también ocupan toda la fila y se alinean a la izquierda */
   .footer-social {
     justify-content: flex-start;
     grid-column: 1 / -1;
   }
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MÓVIL
+   ============================================ */
+
 @media (max-width: 768px) {
+
+  /* Reduce padding en móviles */
   .footer-container {
     padding: 2.5rem 1.5rem 0;
   }
 
+  /* Grid cambia a 1 columna y centra todo el contenido */
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
   }
 
+  /* Centra el logo */
   .footer-logo-section .nav-logo {
     justify-content: center;
   }
 
+  /* Centra elementos de contacto y enlaces */
   .footer-contact,
   .footer-links {
     align-items: center;
   }
 
+  /* Centra líneas de contacto */
   .footer-contact p {
     justify-content: center;
   }
 
+  /* Centra redes sociales */
   .footer-social {
     justify-content: center;
   }
 
+  /* Barra inferior en columna vertical y centrada */
   .footer-bottom {
     flex-direction: column;
     text-align: center;
     padding: 1.25rem 0;
   }
 
+  /* Enlaces legales en columna */
   .footer-bottom-links {
     flex-direction: column;
     gap: 0.5rem;
   }
 
+  /* Reduce padding del modal en móvil */
   .modal-body {
     padding: 1.5rem;
   }
 
+  /* Reduce tamaño de títulos del modal */
   .modal-section h6 {
     font-size: 1rem;
   }
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MÓVILES PEQUEÑOS
+   ============================================ */
+
 @media (max-width: 480px) {
+
+  /* Padding aún más reducido */
   .footer-container {
     padding: 2rem 1rem 0;
   }
 
+  /* Reduce tamaño de texto del logo */
   .footer-logo-section .logo-optica,
   .footer-logo-section .logo-omega {
     font-size: 18px;
   }
 
+  /* Reduce tamaño del ícono del logo */
   .footer-logo-section .logo-icon {
     width: 40px;
     height: 40px;
   }
 
+  /* Reduce fuente de contacto */
   .footer-contact p {
     font-size: 13px;
   }
 
+  /* Reduce fuente de enlaces */
   .footer-links a {
     font-size: 13px;
   }
 
+  /* Reduce fuente de barra inferior */
   .footer-bottom p,
   .footer-bottom-links a {
     font-size: 12px;
   }
 
+  /* Reduce tamaño de íconos sociales */
   .social-icon {
     width: 40px;
     height: 40px;
   }
 
+  /* Reduce tamaño de SVGs dentro de íconos sociales */
   .social-icon svg {
     width: 18px;
     height: 18px;
   }
 
+  /* Reduce padding del header del modal */
   .modal-header {
     padding: 1.25rem;
   }
 
+  /* Reduce tamaño del título del modal */
   .modal-title {
     font-size: 1.25rem;
   }
 
+  /* Reduce padding del body del modal */
   .modal-body {
     padding: 1.25rem;
   }
 
+  /* Reduce espaciado entre secciones del modal */
   .modal-section {
     margin-bottom: 1.5rem;
   }
 
+  /* Ajusta tamaños de fuente del modal */
   .modal-section h6 {
     font-size: 0.95rem;
   }
@@ -521,20 +666,28 @@
   }
 }
 
-/* ===== ANIMACIONES ===== */
+/* ============================================
+   ANIMACIONES Y ACCESIBILIDAD
+   ============================================ */
+
+/* Animación de entrada del footer solo si el usuario no prefiere movimiento reducido */
 @media (prefers-reduced-motion: no-preference) {
   .footer {
     animation: fadeIn 0.6s ease-out;
   }
 }
 
+/* Keyframes para animación de entrada suave desde abajo */
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
+    /* Comienza 20px más abajo */
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+    /* Termina en posición final */
   }
 }
