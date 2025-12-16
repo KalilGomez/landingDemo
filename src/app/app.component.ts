@@ -71,6 +71,7 @@ import { ProductsComponent } from './page/products/products.component';
 import { ContactComponent } from './page/contact/contact.component';
 import { AboutUsComponent } from './page/about-us/about-us.component';
 import { ServicesComponent } from './page/services/services.component';
+import { ShopComponent } from './page/shop/shop.component';
 
 /* ============================================
    COMPONENT METADATA
@@ -100,7 +101,8 @@ import { ServicesComponent } from './page/services/services.component';
     ProductsComponent,
     ContactComponent,
     AboutUsComponent,
-    ServicesComponent
+    ServicesComponent,
+    ShopComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

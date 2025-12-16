@@ -1,0 +1,444 @@
+<!-- shop.component.html -->
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="hero-title">Descubre el Futuro del Estilo</h1>
+        <p class="hero-subtitle">Productos seleccionados con diseño minimalista y calidad premium</p>
+        <button class="btn btn-shop-primary">
+          Explorar Colección
+          <i class="bi bi-arrow-right ms-2"></i>
+        </button>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-image-wrapper">
+          <div class="hero-decoration"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="categories-section">
+  <div class="container">
+    <h2 class="section-title">Categorías</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="bi bi-watch"></i>
+          </div>
+          <h3 class="category-title">Accesorios</h3>
+          <p class="category-desc">Complementos esenciales</p>
+          <a href="#" class="category-link">
+            Ver más <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="bi bi-bag"></i>
+          </div>
+          <h3 class="category-title">Bolsos</h3>
+          <p class="category-desc">Diseño y funcionalidad</p>
+          <a href="#" class="category-link">
+            Ver más <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="bi bi-sunglasses"></i>
+          </div>
+          <h3 class="category-title">Lifestyle</h3>
+          <p class="category-desc">Estilo de vida moderno</p>
+          <a href="#" class="category-link">
+            Ver más <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filters -->
+<section class="filters-section">
+  <div class="container">
+    <div class="filters-bar">
+      <div class="filters-left">
+        <span class="results-count">48 productos</span>
+      </div>
+      <div class="filters-right">
+        <button class="filter-btn active">Todos</button>
+        <button class="filter-btn">Nuevo</button>
+        <button class="filter-btn">Ofertas</button>
+        <button class="filter-btn">Populares</button>
+        <select class="filter-select">
+          <option>Ordenar por</option>
+          <option>Precio: Menor a Mayor</option>
+          <option>Precio: Mayor a Menor</option>
+          <option>Más Reciente</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Grid -->
+<section class="products-section">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Product Card 1 -->
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="product-badge">Nuevo</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favorito">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="action-btn" title="Vista rápida">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="image-placeholder">
+              <i class="bi bi-image"></i>
+            </div>
+            <button class="add-to-cart">
+              <i class="bi bi-cart-plus"></i>
+              Agregar
+            </button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Accesorios</span>
+            <h4 class="product-name">Reloj Minimalista</h4>
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+              <span>(128)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$89.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="product-badge sale">-30%</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favorito">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="action-btn" title="Vista rápida">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="image-placeholder">
+              <i class="bi bi-bag"></i>
+            </div>
+            <button class="add-to-cart">
+              <i class="bi bi-cart-plus"></i>
+              Agregar
+            </button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Bolsos</span>
+            <h4 class="product-name">Mochila Urbana</h4>
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star"></i>
+              <span>(95)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$69.99</span>
+              <span class="old-price">$99.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-actions">
+              <button class="action-btn" title="Favorito">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="action-btn" title="Vista rápida">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="image-placeholder">
+              <i class="bi bi-sunglasses"></i>
+            </div>
+            <button class="add-to-cart">
+              <i class="bi bi-cart-plus"></i>
+              Agregar
+            </button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Lifestyle</span>
+            <h4 class="product-name">Gafas de Sol</h4>
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <span>(203)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$129.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="product-badge">Popular</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favorito">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="action-btn" title="Vista rápida">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="image-placeholder">
+              <i class="bi bi-wallet2"></i>
+            </div>
+            <button class="add-to-cart">
+              <i class="bi bi-cart-plus"></i>
+              Agregar
+            </button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Accesorios</span>
+            <h4 class="product-name">Billetera Premium</h4>
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+              <span>(167)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$49.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat similar cards for more products -->
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-actions">
+              <button class="action-btn" title="Favorito">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="action-btn" title="Vista rápida">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="image-placeholder">
+              <i class="bi bi-headphones"></i>
+            </div>
+            <button class="add-to-cart">
+              <i class="bi bi-cart-plus"></i>
+              Agregar
+            </button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Tech</span>
+            <h4 class="product-name">Auriculares Inalámbricos</h4>
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star"></i>
+              <span>(89)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$159.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="product-badge sale">-20%</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favorito">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="action-btn" title="Vista rápida">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="image-placeholder">
+              <i class="bi bi-phone"></i>
+            </div>
+            <button class="add-to-cart">
+              <i class="bi bi-cart-plus"></i>
+              Agregar
+            </button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Tech</span>
+            <h4 class="product-name">Carcasa Minimalista</h4>
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <span>(312)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$24.99</span>
+              <span class="old-price">$31.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-actions">
+              <button class="action-btn" title="Favorito">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="action-btn" title="Vista rápida">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="image-placeholder">
+              <i class="bi bi-journal"></i>
+            </div>
+            <button class="add-to-cart">
+              <i class="bi bi-cart-plus"></i>
+              Agregar
+            </button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Papelería</span>
+            <h4 class="product-name">Libreta Premium</h4>
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+              <i class="bi bi-star"></i>
+              <span>(76)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$19.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="product-badge">Nuevo</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favorito">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="action-btn" title="Vista rápida">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="image-placeholder">
+              <i class="bi bi-cup"></i>
+            </div>
+            <button class="add-to-cart">
+              <i class="bi bi-cart-plus"></i>
+              Agregar
+            </button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Hogar</span>
+            <h4 class="product-name">Taza Térmica</h4>
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star"></i>
+              <span>(54)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$34.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-wrapper">
+      <nav>
+        <ul class="pagination-custom">
+          <li class="page-item disabled">
+            <a class="page-link" href="#">
+              <i class="bi bi-chevron-left"></i>
+            </a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">
+              <i class="bi bi-chevron-right"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-content">
+      <h2 class="newsletter-title">Mantente Actualizado</h2>
+      <p class="newsletter-subtitle">Suscríbete para recibir ofertas exclusivas y novedades</p>
+      <div class="newsletter-form">
+        <input type="email" class="form-control" placeholder="Tu correo electrónico">
+        <button class="btn btn-newsletter">
+          Suscribirse
+          <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
