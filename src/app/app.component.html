@@ -8,13 +8,11 @@
   Este template define la estructura visual principal de la aplicación.
   
   Aquí se incluyen:
-  - Navbar
-  - Secciones principales (home, productos, servicios, etc.)
+  - Navbar (fijo en todas las vistas)
+  - Router Outlet (contenido dinámico según la ruta)
   - Componentes globales (Whatsapp flotante, Footer)
 
-  Cada sección tiene su propio id para:
-  - Permitir el scroll automático desde el navbar
-  - Ser detectada por el servicio ScrollSpy
+  El router-outlet cargará dinámicamente los componentes según la ruta activa.
 -->
 
 <div class="app-wrapper">
@@ -23,70 +21,34 @@
        NAVBAR
        --------------------------------------------
        Componente de navegación superior.
-       Permite desplazarse entre secciones mediante anchors.
+       Se mantiene fijo en todas las rutas.
+       Usa routerLink para navegar entre páginas.
   ============================================ -->
   <app-navbar></app-navbar>
 
   <!-- ============================================
        CONTENIDO PRINCIPAL (MAIN)
        --------------------------------------------
-       Contiene todas las secciones de la landing page.
-       Cada sección es un componente standalone separado.
+       El router-outlet carga dinámicamente los componentes
+       según la ruta activa definida en app.routes.ts
+       
+       Rutas disponibles:
+       - / → HomeComponent
+       - /productos → ProductsComponent
+       - /servicios → ServicesComponent
+       - /acerca-de → AboutUsComponent
+       - /contacto → ContactComponent
+       - /shop → ShopComponent
   ============================================ -->
   <main>
-
-    <!-- ===================== HOME ===================== -->
-    <!--
-      Sección principal o hero.
-      Contiene el componente HomeComponent.
-    -->
-    <section id="home">
-      <app-home></app-home>
-    </section>
-
-    <!-- ===================== PRODUCTOS ===================== -->
-    <!--
-      Sección donde se muestran los productos de la óptica.
-      El id es usado para scroll y ScrollSpy.
-    -->
-    <section id="productos">
-      <app-products></app-products>
-    </section>
-
-    <!-- ===================== SERVICIOS ===================== -->
-    <!--
-      Sección que muestra todos los servicios ofrecidos.
-    -->
-    <section id="servicios">
-      <app-services></app-services>
-    </section>
-
-    <!-- ===================== ACERCA DE ===================== -->
-    <!--
-      Información de la empresa:
-      - Historia
-      - Misión / visión
-      - Equipo
-    -->
-    <section id="acerca-de">
-      <app-about-us></app-about-us>
-    </section>
-
-    <!-- ===================== CONTACTO ===================== -->
-    <!--
-      Formulario de contacto para mensajes vía email.
-    -->
-    <section id="contacto">
-      <app-contact></app-contact>
-    </section>
-
-    <section id="shop"><app-shop></app-shop></section>
+    <router-outlet></router-outlet>
   </main>
 
   <!-- ============================================
        BOTÓN WHATSAPP FLOTANTE
        --------------------------------------------
-       Permite contacto rápido desde cualquier parte de la página.
+       Permite contacto rápido desde cualquier ruta de la página.
+       Se mantiene visible en todas las vistas.
   ============================================ -->
   <app-whatsapp></app-whatsapp>
 
@@ -94,6 +56,7 @@
        FOOTER
        --------------------------------------------
        Componente de pie de página con info y links útiles.
+       Se mantiene visible en todas las vistas.
   ============================================ -->
   <app-footer></app-footer>
 

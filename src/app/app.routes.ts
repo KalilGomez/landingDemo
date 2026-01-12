@@ -1,52 +1,52 @@
 /* ============================================
-   ROUTES - CONFIGURACIÓN DE RUTAS PRINCIPALES
+   APP.ROUTES.TS - CONFIGURACIÓN DE RUTAS
    ============================================ */
 
-/**
- * Archivo de definición de rutas de la aplicación Angular
- * 
- * Este archivo se utiliza para declarar el arreglo de rutas
- * que define la navegación dentro de la aplicación.
- * 
- * Flujo de uso:
- * 1. Se importa la interfaz Routes desde @angular/router
- * 2. Se crea un arreglo de objetos de ruta
- * 3. Cada objeto define un path y el componente asociado
- * 4. Este arreglo se provee al enrutador mediante provideRouter()
- */
-
-/* ============================================
-   IMPORTS
-   ============================================ */
-
-/**
- * Routes
- * Interfaz de Angular que representa un conjunto de rutas.
- * 
- * Cada ruta puede incluir:
- * - path: la URL que activa la ruta
- * - component: el componente que se renderiza
- * - redirectTo: redirecciones automáticas
- * - children: rutas hijas (nested routing)
- * - canActivate / canDeactivate: guards de navegación
- * 
- * Importado desde: @angular/router
- * Este package contiene las APIs necesarias para implementar routing.
- */
 import { Routes } from '@angular/router';
 
-/* ============================================
-   DECLARACIÓN DE RUTAS
-   ============================================ */
-
 /**
- * routes
- * Constante que define el arreglo de rutas de la aplicación.
+ * Definición de rutas de la aplicación
  * 
- * Inicialmente vacío, se completa con objetos de ruta:
- * Ejemplo:
- * { path: 'home', component: HomeComponent }
- * 
- * Este arreglo se exporta para ser usado en app.config.ts
+ * Cada ruta mapea una URL a un componente específico:
+ * - path: URL relativa (ej: 'productos' → localhost:4200/productos)
+ * - loadComponent: Carga lazy del componente (mejor performance)
+ * - title: Título de la pestaña del navegador (SEO)
  */
-export const routes: Routes = [];
+export const routes: Routes = [
+  {
+    path: '',
+    loadComponent: () => import('./page/home/home.component').then(m => m.HomeComponent),
+    title: 'Inicio - Landing Demo'
+  },
+  {
+    path: 'productos',
+    loadComponent: () => import('./page/products/products.component').then(m => m.ProductsComponent),
+    title: 'Productos - Landing Demo'
+  },
+  {
+    path: 'servicios',
+    loadComponent: () => import('./page/services/services.component').then(m => m.ServicesComponent),
+    title: 'Servicios - Landing Demo'
+  },
+  {
+    path: 'acerca-de',
+    loadComponent: () => import('./page/about-us/about-us.component').then(m => m.AboutUsComponent),
+    title: 'Acerca de - Landing Demo'
+  },
+  {
+    path: 'contacto',
+    loadComponent: () => import('./page/contact/contact.component').then(m => m.ContactComponent),
+    title: 'Contacto - Landing Demo'
+  },
+  {
+    path: 'shop',
+    loadComponent: () => import('./page/shop/shop.component').then(m => m.ShopComponent),
+    title: 'Tienda - Landing Demo'
+  },
+  {
+    // Ruta wildcard: redirige cualquier ruta no encontrada al home
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
+  }
+];
