@@ -5,16 +5,15 @@
 <!--
   Archivo app.component.html
 
-  Este template define la estructura visual principal de la aplicación.
+  CAMBIOS REALIZADOS:
+  - Eliminadas las etiquetas <section> con IDs
+  - Reemplazado el contenido de <main> por <router-outlet>
+  - El router-outlet renderiza dinámicamente los componentes según la ruta activa
   
-  Aquí se incluyen:
-  - Navbar
-  - Secciones principales (home, productos, servicios, etc.)
-  - Componentes globales (Whatsapp flotante, Footer)
-
-  Cada sección tiene su propio id para:
-  - Permitir el scroll automático desde el navbar
-  - Ser detectada por el servicio ScrollSpy
+  Estructura actual:
+  - Navbar: Permanece fijo en todas las vistas
+  - <router-outlet>: Aquí se cargan los componentes de página según la URL
+  - Whatsapp y Footer: Permanecen fijos en todas las vistas
 -->
 
 <div class="app-wrapper">
@@ -23,64 +22,26 @@
        NAVBAR
        --------------------------------------------
        Componente de navegación superior.
-       Permite desplazarse entre secciones mediante anchors.
+       Ahora usa routerLink para navegar entre rutas.
   ============================================ -->
   <app-navbar></app-navbar>
 
   <!-- ============================================
        ROUTER OUTLET - CONTENIDO DINÁMICO
        --------------------------------------------
-       Contiene todas las secciones de la landing page.
-       Cada sección es un componente standalone separado.
+       Aquí se renderizan los componentes según la ruta activa:
+       - /inicio → HomeComponent
+       - /productos → ProductsComponent
+       - /servicios → ServicesComponent
+       - /acerca-de → AboutUsComponent
+       - /contacto → ContactComponent
+       - /shop → ShopComponent
+       
+       Ya no necesitas <section id="..."> porque cada componente
+       se renderiza en su propia ruta independiente.
   ============================================ -->
   <main>
-
-    <!-- ===================== HOME ===================== -->
-    <!--
-      Sección principal o hero.
-      Contiene el componente HomeComponent.
-    -->
-    <section id="home">
-      <app-home></app-home>
-    </section>
-
-    <!-- ===================== PRODUCTOS ===================== -->
-    <!--
-      Sección donde se muestran los productos de la óptica.
-      El id es usado para scroll y ScrollSpy.
-    -->
-    <section id="productos">
-      <app-products></app-products>
-    </section>
-
-    <!-- ===================== SERVICIOS ===================== -->
-    <!--
-      Sección que muestra todos los servicios ofrecidos.
-    -->
-    <section id="servicios">
-      <app-services></app-services>
-    </section>
-
-    <!-- ===================== ACERCA DE ===================== -->
-    <!--
-      Información de la empresa:
-      - Historia
-      - Misión / visión
-      - Equipo
-    -->
-    <section id="acerca-de">
-      <app-about-us></app-about-us>
-    </section>
-
-    <!-- ===================== CONTACTO ===================== -->
-    <!--
-      Formulario de contacto para mensajes vía email.
-    -->
-    <section id="contacto">
-      <app-contact></app-contact>
-    </section>
-
-    <section id="shop"><app-shop></app-shop></section>
+    <router-outlet></router-outlet>
   </main>
 
   <!-- ============================================
