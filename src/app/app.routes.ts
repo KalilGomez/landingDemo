@@ -2,59 +2,51 @@
    ROUTES - CONFIGURACIÓN DE RUTAS PRINCIPALES
    ============================================ */
 
-import { Routes } from '@angular/router';
-import { HomeComponent } from './page/home/home.component';
-import { ProductsComponent } from './page/products/products.component';
-import { AboutUsComponent } from './page/about-us/about-us.component';
-import { ServicesComponent } from './page/services/services.component';
-import { ContactComponent } from './page/contact/contact.component';
-import { ShopComponent } from './page/shop/shop.component';
+/**
+ * Archivo de definición de rutas de la aplicación Angular
+ * 
+ * Este archivo se utiliza para declarar el arreglo de rutas
+ * que define la navegación dentro de la aplicación.
+ * 
+ * Flujo de uso:
+ * 1. Se importa la interfaz Routes desde @angular/router
+ * 2. Se crea un arreglo de objetos de ruta
+ * 3. Cada objeto define un path y el componente asociado
+ * 4. Este arreglo se provee al enrutador mediante provideRouter()
+ */
+
+/* ============================================
+   IMPORTS
+   ============================================ */
 
 /**
- * Configuración de rutas de la aplicación
+ * Routes
+ * Interfaz de Angular que representa un conjunto de rutas.
  * 
- * Cada ruta mapea un path URL a un componente específico:
- * - path: '' (vacío) → Ruta raíz, redirige a /inicio
- * - path: 'inicio' → Componente Home
- * - path: 'productos' → Componente Products
- * - path: 'acerca-de' → Componente AboutUs
- * - path: 'servicios' → Componente Services
- * - path: 'contacto' → Componente Contact
- * - path: 'shop' → Componente Shop
- * - path: '**' → Wildcard para rutas no encontradas, redirige a /inicio
+ * Cada ruta puede incluir:
+ * - path: la URL que activa la ruta
+ * - component: el componente que se renderiza
+ * - redirectTo: redirecciones automáticas
+ * - children: rutas hijas (nested routing)
+ * - canActivate / canDeactivate: guards de navegación
+ * 
+ * Importado desde: @angular/router
+ * Este package contiene las APIs necesarias para implementar routing.
  */
-export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'inicio',
-    pathMatch: 'full'
-  },
-  {
-    path: 'inicio',
-    component: HomeComponent
-  },
-  {
-    path: 'productos',
-    component: ProductsComponent
-  },
-  {
-    path: 'acerca-de',
-    component: AboutUsComponent
-  },
-  {
-    path: 'servicios',
-    component: ServicesComponent
-  },
-  {
-    path: 'contacto',
-    component: ContactComponent
-  },
-  {
-    path: 'shop',
-    component: ShopComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'inicio'
-  }
-];
+import { Routes } from '@angular/router';
+
+/* ============================================
+   DECLARACIÓN DE RUTAS
+   ============================================ */
+
+/**
+ * routes
+ * Constante que define el arreglo de rutas de la aplicación.
+ * 
+ * Inicialmente vacío, se completa con objetos de ruta:
+ * Ejemplo:
+ * { path: 'home', component: HomeComponent }
+ * 
+ * Este arreglo se exporta para ser usado en app.config.ts
+ */
+export const routes: Routes = [];
