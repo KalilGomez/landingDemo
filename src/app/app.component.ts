@@ -66,12 +66,7 @@ import { ScrollSpyService } from './services/scroll-spy.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { WhatsappComponent } from './whatsapp/whatsapp.component';
-import { HomeComponent } from './page/home/home.component';
-import { ProductsComponent } from './page/products/products.component';
-import { ContactComponent } from './page/contact/contact.component';
-import { AboutUsComponent } from './page/about-us/about-us.component';
-import { ServicesComponent } from './page/services/services.component';
-import { ShopComponent } from './page/shop/shop.component';
+import { RouterOutlet } from '@angular/router';
 
 /* ============================================
    COMPONENT METADATA
@@ -97,12 +92,7 @@ import { ShopComponent } from './page/shop/shop.component';
     NavbarComponent,
     FooterComponent,
     WhatsappComponent,
-    HomeComponent,
-    ProductsComponent,
-    ContactComponent,
-    AboutUsComponent,
-    ServicesComponent,
-    ShopComponent
+    RouterOutlet
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
