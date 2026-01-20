@@ -20,7 +20,7 @@ import { ShopComponent } from './page/shop/shop.component';
  * - path: 'acerca-de' → Componente AboutUs
  * - path: 'servicios' → Componente Services
  * - path: 'contacto' → Componente Contact
- * - path: 'shop' → Componente Shop
+ * - path: 'tienda' → Componente tienda
  * - path: '**' → Wildcard para rutas no encontradas, redirige a /inicio
  */
 export const routes: Routes = [
@@ -50,7 +50,7 @@ export const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'shop',
+    path: 'tienda',
     component: ShopComponent
   },
   {

@@ -1,4 +1,4 @@
-<!-- shop.component.html -->
+<!-- shop.component.html - VERSIÓN DINÁMICA -->
 
 <!-- Hero Section -->
 <section class="hero-section">
@@ -27,37 +27,37 @@
     <h2 class="section-title">Categorías</h2>
     <div class="row g-4">
       <div class="col-md-4">
-        <div class="category-card">
+        <div class="category-card" (click)="filterByCategory('Accesorios')" style="cursor: pointer;">
           <div class="category-icon">
             <i class="bi bi-watch"></i>
           </div>
           <h3 class="category-title">Accesorios</h3>
           <p class="category-desc">Complementos esenciales</p>
-          <a href="#" class="category-link">
+          <a class="category-link">
             Ver más <i class="bi bi-arrow-right"></i>
           </a>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="category-card">
+        <div class="category-card" (click)="filterByCategory('Bolsos')" style="cursor: pointer;">
           <div class="category-icon">
             <i class="bi bi-bag"></i>
           </div>
           <h3 class="category-title">Bolsos</h3>
           <p class="category-desc">Diseño y funcionalidad</p>
-          <a href="#" class="category-link">
+          <a class="category-link">
             Ver más <i class="bi bi-arrow-right"></i>
           </a>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="category-card">
+        <div class="category-card" (click)="filterByCategory('Lifestyle')" style="cursor: pointer;">
           <div class="category-icon">
             <i class="bi bi-sunglasses"></i>
           </div>
           <h3 class="category-title">Lifestyle</h3>
           <p class="category-desc">Estilo de vida moderno</p>
-          <a href="#" class="category-link">
+          <a class="category-link">
             Ver más <i class="bi bi-arrow-right"></i>
           </a>
         </div>
@@ -71,18 +71,39 @@
   <div class="container">
     <div class="filters-bar">
       <div class="filters-left">
-        <span class="results-count">48 productos</span>
+        <span class="results-count">{{ products.length }} productos</span>
       </div>
       <div class="filters-right">
-        <button class="filter-btn active">Todos</button>
-        <button class="filter-btn">Nuevo</button>
-        <button class="filter-btn">Ofertas</button>
-        <button class="filter-btn">Populares</button>
-        <select class="filter-select">
-          <option>Ordenar por</option>
-          <option>Precio: Menor a Mayor</option>
-          <option>Precio: Mayor a Menor</option>
-          <option>Más Reciente</option>
+        <button 
+          class="filter-btn" 
+          [class.active]="activeFilter === 'Todos'"
+          (click)="filterByBadge('Todos')">
+          Todos
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="activeFilter === 'Nuevo'"
+          (click)="filterByBadge('Nuevo')">
+          Nuevo
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="activeFilter === 'Oferta'"
+          (click)="filterByBadge('Oferta')">
+          Ofertas
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="activeFilter === 'Popular'"
+          (click)="filterByBadge('Popular')">
+          Populares
+        </button>
+        <select class="filter-select" (change)="sortProducts($event)">
+          <option value="">Ordenar por</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+          <option value="newest">Más Reciente</option>
+          <option value="popular">Más Popular</option>
         </select>
       </div>
     </div>
@@ -92,331 +113,123 @@
 <!-- Products Grid -->
 <section class="products-section">
   <div class="container">
-    <div class="row g-4">
-      <!-- Product Card 1 -->
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="product-card">
-          <div class="product-image">
-            <span class="product-badge">Nuevo</span>
-            <div class="product-actions">
-              <button class="action-btn" title="Favorito">
-                <i class="bi bi-heart"></i>
-              </button>
-              <button class="action-btn" title="Vista rápida">
-                <i class="bi bi-eye"></i>
-              </button>
-            </div>
-            <div class="image-placeholder">
-              <i class="bi bi-image"></i>
-            </div>
-            <button class="add-to-cart">
-              <i class="bi bi-cart-plus"></i>
-              Agregar
-            </button>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Accesorios</span>
-            <h4 class="product-name">Reloj Minimalista</h4>
-            <div class="product-rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-half"></i>
-              <span>(128)</span>
-            </div>
-            <div class="product-price">
-              <span class="current-price">$89.99</span>
-            </div>
-          </div>
-        </div>
+    
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
       </div>
+    </div>
 
-      <!-- Product Card 2 -->
-      <div class="col-lg-3 col-md-4 col-sm-6">
+    <!-- Products - GENERADOS DINÁMICAMENTE -->
+    <div *ngIf="!loading" class="row g-4">
+      <!-- Product Card - Se repite por cada producto del servicio -->
+      <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let product of products">
         <div class="product-card">
           <div class="product-image">
-            <span class="product-badge sale">-30%</span>
+            <!-- Badge dinámico -->
+            <span 
+              *ngIf="product.badge" 
+              class="product-badge"
+              [ngClass]="getBadgeClass(product.badge)">
+              {{ product.badge }}
+            </span>
+            
+            <!-- Badge de descuento si existe oldPrice -->
+            <span 
+              *ngIf="hasDiscount(product)" 
+              class="product-badge sale">
+              -{{ getDiscount(product) }}%
+            </span>
+
+            <!-- Botones de acción -->
             <div class="product-actions">
-              <button class="action-btn" title="Favorito">
+              <button 
+                class="action-btn" 
+                title="Favorito"
+                (click)="toggleFavorite(product)">
                 <i class="bi bi-heart"></i>
               </button>
-              <button class="action-btn" title="Vista rápida">
+              <button 
+                class="action-btn" 
+                title="Vista rápida"
+                (click)="quickView(product)">
                 <i class="bi bi-eye"></i>
               </button>
             </div>
+
+            <!-- Ícono del producto (dinámico) -->
             <div class="image-placeholder">
-              <i class="bi bi-bag"></i>
+              <i class="bi {{ product.icon }}"></i>
             </div>
-            <button class="add-to-cart">
+
+            <!-- Botón agregar al carrito -->
+            <button class="add-to-cart" (click)="addToCart(product)">
               <i class="bi bi-cart-plus"></i>
               Agregar
             </button>
           </div>
-          <div class="product-info">
-            <span class="product-category">Bolsos</span>
-            <h4 class="product-name">Mochila Urbana</h4>
-            <div class="product-rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i>
-              <span>(95)</span>
-            </div>
-            <div class="product-price">
-              <span class="current-price">$69.99</span>
-              <span class="old-price">$99.99</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Product Card 3 -->
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="product-card">
-          <div class="product-image">
-            <div class="product-actions">
-              <button class="action-btn" title="Favorito">
-                <i class="bi bi-heart"></i>
-              </button>
-              <button class="action-btn" title="Vista rápida">
-                <i class="bi bi-eye"></i>
-              </button>
-            </div>
-            <div class="image-placeholder">
-              <i class="bi bi-sunglasses"></i>
-            </div>
-            <button class="add-to-cart">
-              <i class="bi bi-cart-plus"></i>
-              Agregar
-            </button>
-          </div>
+          <!-- Info del producto -->
           <div class="product-info">
-            <span class="product-category">Lifestyle</span>
-            <h4 class="product-name">Gafas de Sol</h4>
+            <span class="product-category">{{ product.category }}</span>
+            <h4 class="product-name">{{ product.name }}</h4>
+            
+            <!-- Rating dinámico con estrellas -->
             <div class="product-rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <span>(203)</span>
+              <!-- Estrellas llenas -->
+              <i 
+                class="bi bi-star-fill" 
+                *ngFor="let star of [].constructor(getStars(product.rating).full)">
+              </i>
+              <!-- Media estrella -->
+              <i 
+                class="bi bi-star-half" 
+                *ngIf="getStars(product.rating).half > 0">
+              </i>
+              <!-- Estrellas vacías -->
+              <i 
+                class="bi bi-star" 
+                *ngFor="let star of [].constructor(getStars(product.rating).empty)">
+              </i>
+              <span>({{ product.reviewCount }})</span>
             </div>
-            <div class="product-price">
-              <span class="current-price">$129.99</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Product Card 4 -->
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="product-card">
-          <div class="product-image">
-            <span class="product-badge">Popular</span>
-            <div class="product-actions">
-              <button class="action-btn" title="Favorito">
-                <i class="bi bi-heart"></i>
-              </button>
-              <button class="action-btn" title="Vista rápida">
-                <i class="bi bi-eye"></i>
-              </button>
-            </div>
-            <div class="image-placeholder">
-              <i class="bi bi-wallet2"></i>
-            </div>
-            <button class="add-to-cart">
-              <i class="bi bi-cart-plus"></i>
-              Agregar
-            </button>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Accesorios</span>
-            <h4 class="product-name">Billetera Premium</h4>
-            <div class="product-rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-half"></i>
-              <span>(167)</span>
-            </div>
+            <!-- Precio -->
             <div class="product-price">
-              <span class="current-price">$49.99</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Repeat similar cards for more products -->
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="product-card">
-          <div class="product-image">
-            <div class="product-actions">
-              <button class="action-btn" title="Favorito">
-                <i class="bi bi-heart"></i>
-              </button>
-              <button class="action-btn" title="Vista rápida">
-                <i class="bi bi-eye"></i>
-              </button>
-            </div>
-            <div class="image-placeholder">
-              <i class="bi bi-headphones"></i>
-            </div>
-            <button class="add-to-cart">
-              <i class="bi bi-cart-plus"></i>
-              Agregar
-            </button>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Tech</span>
-            <h4 class="product-name">Auriculares Inalámbricos</h4>
-            <div class="product-rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i>
-              <span>(89)</span>
-            </div>
-            <div class="product-price">
-              <span class="current-price">$159.99</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="product-card">
-          <div class="product-image">
-            <span class="product-badge sale">-20%</span>
-            <div class="product-actions">
-              <button class="action-btn" title="Favorito">
-                <i class="bi bi-heart"></i>
-              </button>
-              <button class="action-btn" title="Vista rápida">
-                <i class="bi bi-eye"></i>
-              </button>
-            </div>
-            <div class="image-placeholder">
-              <i class="bi bi-phone"></i>
-            </div>
-            <button class="add-to-cart">
-              <i class="bi bi-cart-plus"></i>
-              Agregar
-            </button>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Tech</span>
-            <h4 class="product-name">Carcasa Minimalista</h4>
-            <div class="product-rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <span>(312)</span>
-            </div>
-            <div class="product-price">
-              <span class="current-price">$24.99</span>
-              <span class="old-price">$31.99</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="product-card">
-          <div class="product-image">
-            <div class="product-actions">
-              <button class="action-btn" title="Favorito">
-                <i class="bi bi-heart"></i>
-              </button>
-              <button class="action-btn" title="Vista rápida">
-                <i class="bi bi-eye"></i>
-              </button>
-            </div>
-            <div class="image-placeholder">
-              <i class="bi bi-journal"></i>
-            </div>
-            <button class="add-to-cart">
-              <i class="bi bi-cart-plus"></i>
-              Agregar
-            </button>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Papelería</span>
-            <h4 class="product-name">Libreta Premium</h4>
-            <div class="product-rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-half"></i>
-              <i class="bi bi-star"></i>
-              <span>(76)</span>
-            </div>
-            <div class="product-price">
-              <span class="current-price">$19.99</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="product-card">
-          <div class="product-image">
-            <span class="product-badge">Nuevo</span>
-            <div class="product-actions">
-              <button class="action-btn" title="Favorito">
-                <i class="bi bi-heart"></i>
-              </button>
-              <button class="action-btn" title="Vista rápida">
-                <i class="bi bi-eye"></i>
-              </button>
-            </div>
-            <div class="image-placeholder">
-              <i class="bi bi-cup"></i>
-            </div>
-            <button class="add-to-cart">
-              <i class="bi bi-cart-plus"></i>
-              Agregar
-            </button>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Hogar</span>
-            <h4 class="product-name">Taza Térmica</h4>
-            <div class="product-rating">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i>
-              <span>(54)</span>
-            </div>
-            <div class="product-price">
-              <span class="current-price">$34.99</span>
+              <span class="current-price">${{ product.price.toFixed(2) }}</span>
+              <span 
+                *ngIf="product.oldPrice" 
+                class="old-price">
+                ${{ product.oldPrice.toFixed(2) }}
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Empty State - Si no hay productos -->
+    <div *ngIf="!loading && products.length === 0" class="text-center py-5">
+      <i class="bi bi-inbox" style="font-size: 4rem; color: #ccc;"></i>
+      <p class="text-muted mt-3">No se encontraron productos</p>
+    </div>
+
     <!-- Pagination -->
-    <div class="pagination-wrapper">
+    <div *ngIf="!loading && products.length > 0" class="pagination-wrapper">
       <nav>
         <ul class="pagination-custom">
           <li class="page-item disabled">
-            <a class="page-link" href="#">
+            <a class="page-link">
               <i class="bi bi-chevron-left"></i>
             </a>
           </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item active"><a class="page-link">1</a></li>
+          <li class="page-item"><a class="page-link">2</a></li>
+          <li class="page-item"><a class="page-link">3</a></li>
+          <li class="page-item"><a class="page-link">4</a></li>
           <li class="page-item">
-            <a class="page-link" href="#">
+            <a class="page-link">
               <i class="bi bi-chevron-right"></i>
             </a>
           </li>
