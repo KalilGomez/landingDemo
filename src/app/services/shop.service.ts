@@ -159,7 +159,17 @@ export class ShopService {
 
       // Filtrar por badge
       if (filter.badge && filter.badge !== 'Todos') {
-        filtered = filtered.filter(p => p.badge === filter.badge);
+        // Normalizar el nombre del badge para la comparación
+        const badgeMap: { [key: string]: string } = {
+          'Nuevo': 'Nuevo',
+          'Oferta': 'Oferta',
+          'Popular': 'Popular'
+        };
+        
+        const normalizedBadge = badgeMap[filter.badge];
+        if (normalizedBadge) {
+          filtered = filtered.filter(p => p.badge === normalizedBadge);
+        }
       }
 
       // Filtrar por rango de precio

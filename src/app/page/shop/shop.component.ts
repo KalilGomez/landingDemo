@@ -17,7 +17,10 @@ import { Product } from '../../models/product';
 })
 export class ShopComponent implements OnInit, OnDestroy {
 
-  // Productos a mostrar
+  // Productos totales del servicio
+  allProducts: Product[] = [];
+  
+  // Productos a mostrar en la página actual
   products: Product[] = [];
   
   // Categorías disponibles
@@ -32,6 +35,11 @@ export class ShopComponent implements OnInit, OnDestroy {
   // Orden seleccionado
   selectedSort: string = '';
 
+  // Paginación
+  currentPage: number = 1;
+  itemsPerPage: number = 8;
+  totalPages: number = 1;
+
   private subscription: Subscription = new Subscription();
 
   constructor(public shopService: ShopService) { }
@@ -40,7 +48,9 @@ export class ShopComponent implements OnInit, OnDestroy {
     // Suscribirse a los productos del servicio
     this.subscription.add(
       this.shopService.getProducts().subscribe(products => {
-        this.products = products;
+        this.allProducts = products;
+        this.calculatePagination();
+        this.updateDisplayedProducts();
       })
     );
 
@@ -62,9 +72,65 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  /* ============================================
+     PAGINACIÓN
+     ============================================ */
+
+  calculatePagination(): void {
+    this.totalPages = Math.ceil(this.allProducts.length / this.itemsPerPage);
+    
+    // Si la página actual es mayor que el total, volver a la primera
+    if (this.currentPage > this.totalPages && this.totalPages > 0) {
+      this.currentPage = 1;
+    }
+  }
+
+  updateDisplayedProducts(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.products = this.allProducts.slice(startIndex, endIndex);
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updateDisplayedProducts();
+      this.scrollToTop();
+    }
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updateDisplayedProducts();
+      this.scrollToTop();
+    }
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updateDisplayedProducts();
+      this.scrollToTop();
+    }
+  }
+
+  getPaginationArray(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ============================================
+     FILTROS
+     ============================================ */
+
   // Filtrar por badge (Todos, Nuevo, Ofertas, Populares)
   filterByBadge(filter: string): void {
     this.activeFilter = filter;
+    this.currentPage = 1; // Reset a página 1
 
     const filterConfig: any = {
       badge: filter
@@ -75,10 +141,20 @@ export class ShopComponent implements OnInit, OnDestroy {
     }
 
     this.shopService.filterProducts(filterConfig);
+    
+    // Scroll a la sección de productos
+    setTimeout(() => {
+      const productsSection = document.querySelector('.products-section');
+      if (productsSection) {
+        productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
   }
 
   // Filtrar por categoría
   filterByCategory(category: string): void {
+    this.currentPage = 1; // Reset a página 1
+    
     const filterConfig: any = {
       category: category
     };
@@ -88,12 +164,21 @@ export class ShopComponent implements OnInit, OnDestroy {
     }
 
     this.shopService.filterProducts(filterConfig);
+    
+    // Scroll a la sección de productos
+    setTimeout(() => {
+      const productsSection = document.querySelector('.products-section');
+      if (productsSection) {
+        productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
   }
 
   // Ordenar productos
   sortProducts(event: Event): void {
     const select = event.target as HTMLSelectElement;
     this.selectedSort = select.value;
+    this.currentPage = 1; // Reset a página 1
 
     if (this.selectedSort) {
       const filterConfig: any = {
@@ -107,6 +192,10 @@ export class ShopComponent implements OnInit, OnDestroy {
       this.shopService.filterProducts(filterConfig);
     }
   }
+
+  /* ============================================
+     MÉTODOS AUXILIARES
+     ============================================ */
 
   // Obtiene el array de estrellas para mostrar el rating
   getStars(rating: number): { full: number; half: number; empty: number } {
@@ -138,6 +227,10 @@ export class ShopComponent implements OnInit, OnDestroy {
         return '';
     }
   }
+
+  /* ============================================
+     ACCIONES
+     ============================================ */
 
   // Agrega producto al carrito (placeholder)
   addToCart(product: Product): void {
