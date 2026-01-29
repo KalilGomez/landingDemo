@@ -4,6 +4,7 @@
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ShopService } from '../../services/shop.service';
 import { Product } from '../../models/product';
@@ -11,7 +12,7 @@ import { Product } from '../../models/product';
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css'
 })

@@ -9,19 +9,13 @@ import { AboutUsComponent } from './page/about-us/about-us.component';
 import { ServicesComponent } from './page/services/services.component';
 import { ContactComponent } from './page/contact/contact.component';
 import { ShopComponent } from './page/shop/shop.component';
+import { ProductDetailComponent } from './page/product-detail/product-detail.component';
 
 /**
  * Configuración de rutas de la aplicación
  * 
- * Cada ruta mapea un path URL a un componente específico:
- * - path: '' (vacío) → Ruta raíz, redirige a /inicio
- * - path: 'inicio' → Componente Home
- * - path: 'productos' → Componente Products
- * - path: 'acerca-de' → Componente AboutUs
- * - path: 'servicios' → Componente Services
- * - path: 'contacto' → Componente Contact
- * - path: 'tienda' → Componente tienda
- * - path: '**' → Wildcard para rutas no encontradas, redirige a /inicio
+ * NUEVA RUTA AGREGADA:
+ * - path: 'tienda/:id' → Vista de detalle del producto
  */
 export const routes: Routes = [
   {
@@ -50,8 +44,12 @@ export const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'tienda',
+    path: 'shop',
     component: ShopComponent
+  },
+  {
+    path: 'tienda/:id',
+    component: ProductDetailComponent
   },
   {
     path: '**',
