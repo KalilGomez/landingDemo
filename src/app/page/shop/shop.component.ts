@@ -7,12 +7,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ShopService } from '../../services/shop.service';
+import { CartService } from '../../services/cart.service';
+import { FavoritesService } from '../../services/favorites.service';
 import { Product } from '../../models/product';
+import { CartModalComponent } from '../../cart-modal/cart-modal.component';
 
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, CartModalComponent],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css'
 })
@@ -41,9 +44,16 @@ export class ShopComponent implements OnInit, OnDestroy {
   itemsPerPage: number = 8;
   totalPages: number = 1;
 
+  // Modal del carrito
+  showCartModal: boolean = false;
+
   private subscription: Subscription = new Subscription();
 
-  constructor(public shopService: ShopService) { }
+  constructor(
+    public shopService: ShopService,
+    private cartService: CartService,
+    private favoritesService: FavoritesService
+  ) { }
 
   ngOnInit(): void {
     // Suscribirse a los productos del servicio
@@ -233,18 +243,60 @@ export class ShopComponent implements OnInit, OnDestroy {
      ACCIONES
      ============================================ */
 
-  // Agrega producto al carrito (placeholder)
-  addToCart(product: Product): void {
-    console.log('Agregado al carrito:', product);
+  // Agregar producto al carrito
+  addToCart(product: Product, event?: Event): void {
+    if (event) {
+      event.stopPropagation(); // Prevenir navegación al detalle
+    }
+    
+    // CORREGIDO: addToCart solo recibe el producto
+    this.cartService.addToCart(product);
+    
+    // Mostrar confirmación
+    alert(`✅ ${product.name} agregado al carrito`);
   }
 
-  // Agrega/quita de favoritos (placeholder)
-  toggleFavorite(product: Product): void {
-    console.log('Toggle favorito:', product);
+  // Agregar/quitar de favoritos
+  toggleFavorite(product: Product, event?: Event): void {
+    if (event) {
+      event.stopPropagation();
+    }
+    
+    // CORREGIDO: Primero verificar si está en favoritos, luego hacer toggle
+    const wasFavorite = this.favoritesService.isFavorite(product.id);
+    this.favoritesService.toggleFavorite(product);
+    
+    if (!wasFavorite) {
+      alert(`❤️ ${product.name} agregado a favoritos`);
+    } else {
+      alert(`💔 ${product.name} quitado de favoritos`);
+    }
   }
 
-  // Muestra vista rápida del producto (placeholder)
-  quickView(product: Product): void {
-    console.log('Vista rápida:', product);
+  // Verificar si está en favoritos
+  isFavorite(productId: number): boolean {
+    return this.favoritesService.isFavorite(productId);
+  }
+
+  // Muestra vista rápida del producto
+  quickView(product: Product, event?: Event): void {
+    if (event) {
+      event.stopPropagation();
+    }
+    // Por ahora redirige al detalle
+    // Podrías implementar un modal de vista rápida aquí
+    window.location.href = `/tienda/${product.id}`;
+  }
+
+  // Abrir modal del carrito
+  openCartModal(): void {
+    this.showCartModal = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Cerrar modal del carrito
+  closeCartModal(): void {
+    this.showCartModal = false;
+    document.body.style.overflow = '';
   }
 }

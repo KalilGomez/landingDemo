@@ -2,67 +2,89 @@
    NAVBAR COMPONENT - VERSIÓN CON ANGULAR ROUTER
    ============================================ */
 
-/**
- * CAMBIOS REALIZADOS:
- * - Eliminado ScrollSpyService (ya no es necesario)
- * - Agregado RouterModule para usar routerLink y routerLinkActive
- * - Cambiado 'id' por 'route' en menuItems
- * - Eliminados métodos de scroll (navigateToSection, scrollToTop)
- * - El router maneja automáticamente la navegación y la clase active
- */
-
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CartService } from '../services/cart.service';
+import { FavoritesService } from '../services/favorites.service';
+import { Subscription } from 'rxjs';
+import { CartModalComponent } from '../cart-modal/cart-modal.component';
+import { FavoritesModalComponent } from '../favorites-modal/favorites-modal.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule  // ← NUEVO: Importa RouterLink y RouterLinkActive
+    RouterModule,
+    CartModalComponent,
+    FavoritesModalComponent
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit, OnDestroy {
 
   /* ============================================
      PROPIEDADES
      ============================================ */
 
-  /**
-   * Estado del menú móvil (abierto/cerrado)
-   * Controla la visibilidad del panel lateral en dispositivos móviles
-   */
   isMobileMenuOpen: boolean = false;
+  showCartModal: boolean = false;
+  showFavoritesModal: boolean = false;
+  
+  // Contadores
+  cartCount: number = 0;
+  favoritesCount: number = 0;
 
-  /**
-   * Items del menú de navegación
-   * ACTUALIZADO: Ahora usa 'route' en lugar de 'id'
-   * 
-   * Estructura de cada item:
-   * - route: ruta de Angular (/inicio, /productos, etc.)
-   * - label: texto que se muestra en el menú
-   * - icon: clase de Bootstrap Icons para el ícono
-   */
+  // Subscripciones
+  private subscription = new Subscription();
+
   menuItems = [
     { route: '/inicio', label: 'Inicio', icon: 'bi bi-house' },
     { route: '/productos', label: 'Productos', icon: 'bi bi-eyeglasses' },
     { route: '/acerca-de', label: 'Acerca de', icon: 'bi bi-info-circle' },
     { route: '/servicios', label: 'Servicios', icon: 'bi bi-tools' },
-    { route: '/contacto', label: 'Contacto', icon: 'bi bi-telephone' },
-    { route: '/tienda', label: 'Tienda', icon: 'bi bi-cart' }
+    { route: '/contacto', label: 'Contacto', icon: 'bi bi-telephone' }
   ];
+
+  /* ============================================
+     CONSTRUCTOR
+     ============================================ */
+
+  constructor(
+    private cartService: CartService,
+    private favoritesService: FavoritesService
+  ) {}
+
+  /* ============================================
+     LIFECYCLE HOOKS
+     ============================================ */
+
+  ngOnInit(): void {
+    // Suscribirse al contador del carrito
+    this.subscription.add(
+      this.cartService.cartCount$.subscribe(count => {
+        this.cartCount = count;
+      })
+    );
+
+    // Suscribirse al contador de favoritos
+    this.subscription.add(
+      this.favoritesService.favoritesCount$.subscribe(count => {
+        this.favoritesCount = count;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   /* ============================================
      MÉTODOS DEL MENÚ MÓVIL
      ============================================ */
 
-  /**
-   * Alterna el estado del menú móvil entre abierto y cerrado
-   * También controla el overflow del body para prevenir scroll
-   */
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
     
@@ -73,14 +95,51 @@ export class NavbarComponent {
     }
   }
 
-  /**
-   * Cierra el menú móvil y restaura el scroll normal del body
-   * Se llama cuando:
-   * - El usuario hace click en el overlay
-   * - El usuario hace click en un enlace del menú
-   */
   closeMobileMenu(): void {
     this.isMobileMenuOpen = false;
     document.body.style.overflow = '';
+  }
+
+  /* ============================================
+     MÉTODOS PARA MODALES
+     ============================================ */
+
+  openCartModal(): void {
+    this.showCartModal = true;
+    this.closeMobileMenu();
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeCartModal(): void {
+    this.showCartModal = false;
+    document.body.style.overflow = '';
+  }
+
+  openFavoritesModal(): void {
+    this.showFavoritesModal = true;
+    this.closeMobileMenu();
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeFavoritesModal(): void {
+    this.showFavoritesModal = false;
+    document.body.style.overflow = '';
+  }
+
+  /* ============================================
+     LISTENER PARA CERRAR MENÚ CON ESC
+     ============================================ */
+
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscapeKey(event: KeyboardEvent): void {
+    if (this.isMobileMenuOpen) {
+      this.closeMobileMenu();
+    }
+    if (this.showCartModal) {
+      this.closeCartModal();
+    }
+    if (this.showFavoritesModal) {
+      this.closeFavoritesModal();
+    }
   }
 }

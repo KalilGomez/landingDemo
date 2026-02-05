@@ -6,7 +6,6 @@
 
     <!-- === LOGO Y MARCA === -->
     <div class="nav-logo">
-      <!-- Logo con routerLink que navega al inicio -->
       <a class="logo-link" routerLink="/inicio">
         <div class="logo-icon">
           <img src="Logo.webp" alt="Optica Omega Logo" class="logo-img">
@@ -20,35 +19,52 @@
 
     <!-- === MENÚ DE NAVEGACIÓN === -->
     <div class="navbar-menu" [class.mobile-open]="isMobileMenuOpen" [class.show]="isMobileMenuOpen">
-      <!-- 
-        CAMBIOS IMPLEMENTADOS:
-        - [routerLink]="item.route" → Vincula el enlace a la ruta de Angular
-        - routerLinkActive="active" → Aplica clase 'active' automáticamente
-        - (click)="closeMobileMenu()" → Cierra el menú móvil al hacer click
-        - item.route en lugar de item.id → Usa rutas en lugar de IDs de sección
-      -->
-      <a 
-        *ngFor="let item of menuItems" 
-        class="nav-link" 
-        [routerLink]="item.route"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: false}"
-        (click)="closeMobileMenu()"
-      >
+
+      <!-- Links normales del menú -->
+      <a *ngFor="let item of menuItems" class="nav-link" [routerLink]="item.route" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: false}" (click)="closeMobileMenu()">
         <i [class]="item.icon" class="nav-icon"></i>
         <span class="nav-text">{{ item.label }}</span>
         <span class="nav-indicator"></span>
       </a>
+
+      <!-- === NUEVO: MENÚ DROPDOWN TIENDA === -->
+      <div class="nav-dropdown-wrapper">
+        <!-- Botón principal que navega a /shop -->
+        <a class="nav-link nav-dropdown-trigger" routerLink="/shop" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: false}" (click)="closeMobileMenu()">
+          <i class="bi bi-shop nav-icon"></i>
+          <span class="nav-text">Tienda</span>
+          <i class="bi bi-chevron-down dropdown-arrow"></i>
+        </a>
+
+        <!-- Menú desplegable -->
+        <div class="nav-dropdown-menu">
+          <!-- Favoritos - Abre modal -->
+          <button class="nav-dropdown-item" (click)="openFavoritesModal()">
+            <div class="icon-with-badge">
+              <i class="bi bi-heart"></i>
+              <span class="badge-count" *ngIf="favoritesCount > 0">{{ favoritesCount }}</span>
+            </div>
+            <span>Favoritos</span>
+          </button>
+
+          <!-- Carrito - Abre modal -->
+          <button class="nav-dropdown-item" (click)="openCartModal()">
+            <div class="icon-with-badge">
+              <i class="bi bi-cart3"></i>
+              <span class="badge-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+            </div>
+            <span>Carrito</span>
+          </button>
+        </div>
+      </div>
+
     </div>
 
     <!-- === BOTÓN HAMBURGUESA MÓVIL === -->
     <div class="mobile-menu-button">
-      <button 
-        class="hamburger" 
-        [class.active]="isMobileMenuOpen" 
-        (click)="toggleMobileMenu()" 
-        aria-label="Toggle menu"
-      >
+      <button class="hamburger" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
@@ -58,8 +74,8 @@
 </nav>
 
 <!-- === OVERLAY MÓVIL === -->
-<div 
-  class="mobile-overlay" 
-  [class.active]="isMobileMenuOpen" 
-  (click)="closeMobileMenu()"
-></div>
+<div class="mobile-overlay" [class.active]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
+<!-- === MODALES === -->
+<app-cart-modal *ngIf="showCartModal" (closeModal)="closeCartModal()"></app-cart-modal>
+
+<app-favorites-modal *ngIf="showFavoritesModal" (closeModal)="closeFavoritesModal()"></app-favorites-modal>

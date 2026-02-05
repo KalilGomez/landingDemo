@@ -1,0 +1,80 @@
+<!-- Backdrop del modal -->
+<div class="modal-backdrop" (click)="onBackdropClick($event)">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    
+    <!-- Header del modal -->
+    <div class="modal-header">
+      <h2 class="modal-title">
+        <i class="bi bi-heart-fill"></i>
+        Mis Favoritos
+      </h2>
+      <button class="modal-close" (click)="close()" aria-label="Cerrar">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <!-- Body del modal -->
+    <div class="modal-body">
+      
+      <!-- Favoritos vacío -->
+      <div *ngIf="favoriteItems.length === 0" class="empty-state">
+        <i class="bi bi-heart"></i>
+        <h3>No tienes favoritos</h3>
+        <p>Agrega productos a tus favoritos para verlos aquí</p>
+        <button class="btn-primary" routerLink="/productos" (click)="close()">
+          Explorar Productos
+        </button>
+      </div>
+
+      <!-- Lista de favoritos -->
+      <div *ngIf="favoriteItems.length > 0" class="favorites-grid">
+        <div *ngFor="let item of favoriteItems" class="favorite-card">
+          
+          <!-- Imagen del producto -->
+          <div class="card-image">
+            <img [src]="item.image" [alt]="item.name">
+            <button class="btn-remove-fav" (click)="removeFromFavorites(item.id)" title="Quitar de favoritos">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+          </div>
+
+          <!-- Info del producto -->
+          <div class="card-content">
+            <h4 class="card-title">{{ item.name }}</h4>
+            <p class="card-description" *ngIf="item.description">
+              {{ item.description | slice:0:60 }}{{ item.description.length > 60 ? '...' : '' }}
+            </p>
+            <div class="card-price">
+              ${{ item.price | number:'1.2-2' }}
+            </div>
+          </div>
+
+          <!-- Acciones -->
+          <div class="card-actions">
+            <button class="btn-add-cart" (click)="addToCart(item)" title="Agregar al carrito">
+              <i class="bi bi-cart-plus"></i>
+              Agregar al carrito
+            </button>
+            <button class="btn-move-cart" (click)="moveToCart(item)" title="Mover al carrito">
+              <i class="bi bi-arrow-right-circle"></i>
+              Mover al carrito
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer del modal -->
+    <div class="modal-footer" *ngIf="favoriteItems.length > 0">
+      <div class="footer-info">
+        <i class="bi bi-info-circle"></i>
+        <span>Tienes {{ favoriteItems.length }} {{ favoriteItems.length === 1 ? 'producto' : 'productos' }} en favoritos</span>
+      </div>
+      <button class="btn-secondary" (click)="close()">
+        Cerrar
+      </button>
+    </div>
+
+  </div>
+</div>
